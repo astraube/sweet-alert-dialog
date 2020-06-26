@@ -40,7 +40,7 @@ public class ProgressHelper {
             if (!mToSpin && mProgressWheel.isSpinning()) {
                 mProgressWheel.stopSpinning();
             } else if (mToSpin && !mProgressWheel.isSpinning()) {
-                mProgressWheel.startSpinning();
+                mProgressWheel.spin();
             }
             if (mSpinSpeed != mProgressWheel.getSpinSpeed()) {
                 mProgressWheel.setSpinSpeed(mSpinSpeed);
@@ -59,7 +59,7 @@ public class ProgressHelper {
             }
             if (mProgressVal != mProgressWheel.getProgress()) {
                 if (mIsInstantProgress) {
-                    mProgressWheel.incrementProgress((int) mProgressVal);
+                    mProgressWheel.setInstantProgress((int) mProgressVal);
                 } else {
                     mProgressWheel.setProgress((int) mProgressVal);
                 }
