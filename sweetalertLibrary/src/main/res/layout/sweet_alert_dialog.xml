@@ -7,7 +7,7 @@
     android:gravity="center"
     android:layout_gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/dialog_background"
+    android:background="@drawable/sweet_dialog_background"
     android:padding="10dp">
 
     <ImageView
@@ -28,14 +28,14 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/error_circle" />
+            android:background="@drawable/sweet_error_circle" />
 
         <ImageView
             android:id="@+id/error_x"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/error_center_x"
+            android:src="@drawable/sweet_error_center_x"
             android:scaleType="center" />
 
     </FrameLayout>
@@ -50,7 +50,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/success_bow" />
+            android:background="@drawable/sweet_success_bow" />
 
         <View
             android:id="@+id/mask_right"
@@ -71,7 +71,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/success_circle" />
+            android:background="@drawable/sweet_success_circle" />
 
         <br.com.andrestraube.sweetalert.SuccessTickView
             android:id="@+id/success_tick"
@@ -90,13 +90,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/warning_circle" />
+            android:background="@drawable/sweet_warning_circle" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/warning_sigh"
+            android:src="@drawable/sweet_warning_sigh"
             android:scaleType="center" />
     </FrameLayout>
 
@@ -148,7 +148,7 @@
         <Button
             android:id="@+id/cancel_button"
             style="@style/dialog_blue_button"
-            android:background="@drawable/gray_button_background"
+            android:background="@drawable/sweet_gray_button_background"
             android:layout_marginRight="10dp"
             android:visibility="gone"
             android:text="@string/dialog_cancel" />
