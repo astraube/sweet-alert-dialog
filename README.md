@@ -13,10 +13,6 @@ Inspired by JavaScript [SweetAlert](http://tristanedwards.me/sweetalert)
 ## Setup
 The simplest way to use SweetAlertDialog is to add the library as aar dependency to your build.
 
-**Gradle**
-
-    AGUARDE...
-
 ## Usage
 
 show material progress
