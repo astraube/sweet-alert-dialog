@@ -1,5 +1,6 @@
 package com.github.astraube.sample
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View

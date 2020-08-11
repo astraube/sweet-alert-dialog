@@ -51,6 +51,7 @@ class SweetAlertDialog @JvmOverloads constructor(
     private var mCancelClickListener: OnSweetListener? = null
     private var mConfirmClickListener: OnSweetListener? = null
     private var mCloseFromCancel = false
+    val progressHelper: ProgressHelper
     var titleText: String? = null
     var contentText: String? = null
     var isShowCancelButton = false
@@ -58,7 +59,6 @@ class SweetAlertDialog @JvmOverloads constructor(
     var cancelText: String? = null
     var confirmText: String? = null
     var alerType: Int
-    val progressHelper: ProgressHelper
 
 
     interface OnSweetListener {

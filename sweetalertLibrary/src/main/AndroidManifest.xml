@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.github.astraube"
     android:versionCode="1"
-    android:versionName="1.0.0"
+    android:versionName="1.0"
     tools:ignore="GradleOverrides">
 
     <uses-sdk android:targetSdkVersion="29"/>
