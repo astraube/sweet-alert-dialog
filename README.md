@@ -8,7 +8,7 @@ This is a re-reading in Kotlin of the library [SweetAlert](https://github.com/pe
 Inspired by JavaScript [SweetAlert](http://tristanedwards.me/sweetalert)
 
 ## ScreenShot
-![image](https://github.com/astraube/sweet-alert-dialog/images/change_type.gif)
+![image](https://raw.githubusercontent.com/astraube/sweet-alert-dialog-kotlin/master/images/change_type.gif)
 
 ## Setup
 The simplest way to use SweetAlertDialog is to add the library as aar dependency to your build.
@@ -23,7 +23,7 @@ show material progress
     pDialog.setCancelable(false);
     pDialog.show();
 
-![image](https://github.com/astraube/sweet-alert-dialog/images/play_progress.gif)
+![image](https://raw.githubusercontent.com/astraube/sweet-alert-dialog-kotlin/master/images/play_progress.gif)
 
 You can customize progress bar dynamically with materialish-progress methods via **SweetAlertDialog.getProgressHelper()**:
 - resetCount()
