@@ -1,4 +1,4 @@
-package br.com.andrestraube.sweetalert
+package com.github.astraube
 
 import org.junit.Test
 

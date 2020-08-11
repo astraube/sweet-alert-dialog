@@ -2,14 +2,13 @@ Sweet Alert Dialog
 ===================
 SweetAlert for Android, a beautiful and clever alert dialog
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Sweet%20Alert%20Dialog-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1065)
+**Attention!!!**
+This is a re-reading in Kotlin of the library [SweetAlert](https://github.com/pedant/sweet-alert-dialog)
 
 Inspired by JavaScript [SweetAlert](http://tristanedwards.me/sweetalert)
 
-[Demo Download](https://github.com/pedant/sweet-alert-dialog/releases/download/v1.1/sweet-alert-sample-v1.1.apk)
-
 ## ScreenShot
-![image](https://github.com/pedant/sweet-alert-dialog/raw/master/change_type.gif)
+![image](https://github.com/astraube/sweet-alert-dialog/images/change_type.gif)
 
 ## Setup
 The simplest way to use SweetAlertDialog is to add the library as aar dependency to your build.
@@ -28,7 +27,7 @@ show material progress
     pDialog.setCancelable(false);
     pDialog.show();
 
-![image](https://github.com/pedant/sweet-alert-dialog/raw/master/play_progress.gif)
+![image](https://github.com/astraube/sweet-alert-dialog/images/play_progress.gif)
 
 You can customize progress bar dynamically with materialish-progress methods via **SweetAlertDialog.getProgressHelper()**:
 - resetCount()
@@ -104,7 +103,7 @@ Bind the listener to confirm button：
         .setTitleText("Are you sure?")
         .setContentText("Won't be able to recover this file!")
         .setConfirmText("Yes,delete it!")
-        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+        .setConfirmClickListener(new OnSweetListener() {
             @Override
             public void onClick(SweetAlertDialog sDialog) {
                 sDialog.dismissWithAnimation();
@@ -120,7 +119,7 @@ Show the cancel button and bind listener to it：
         .setCancelText("No,cancel plx!")
         .setConfirmText("Yes,delete it!")
         .showCancelButton(true)
-        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+        .setCancelClickListener(new OnSweetListener() {
             @Override
             public void onClick(SweetAlertDialog sDialog) {
                 sDialog.cancel();
@@ -134,7 +133,7 @@ Show the cancel button and bind listener to it：
         .setTitleText("Are you sure?")
         .setContentText("Won't be able to recover this file!")
         .setConfirmText("Yes,delete it!")
-        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+        .setConfirmClickListener(new OnSweetListener() {
             @Override
             public void onClick(SweetAlertDialog sDialog) {
                 sDialog
@@ -147,13 +146,13 @@ Show the cancel button and bind listener to it：
         })
         .show();
 
-[more android tech shares: pedant.cn](http://www.pedant.cn)
+[more android tech shares: andrestraube.com.br](http://www.andrestraube.com.br)
 
 ## License
 
     The MIT License (MIT)
 
-    Copyright (c) 2014 Pedant(http://pedant.cn)
+    Copyright (c) 2020 Andre Straube(http://andrestraube.com.br)
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal

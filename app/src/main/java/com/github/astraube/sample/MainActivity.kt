@@ -1,10 +1,10 @@
-package br.com.andrestraube.sweetalert.sample
+package com.github.astraube.sample
 
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import br.com.andrestraube.sweetalert.SweetAlertDialog
+import com.github.astraube.SweetAlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -14,17 +14,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(br.com.andrestraube.sweetalert.sample.R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
 
-        basic_test.setOnClickListener(this);
-        under_text_test.setOnClickListener(this);
-        error_text_test.setOnClickListener(this);
-        success_text_test.setOnClickListener(this);
-        warning_confirm_test.setOnClickListener(this);
-        warning_cancel_test.setOnClickListener(this);
-        custom_img_test.setOnClickListener(this);
-        progress_dialog.setOnClickListener(this);
+        basic_test.setOnClickListener(this)
+        under_text_test.setOnClickListener(this)
+        error_text_test.setOnClickListener(this)
+        success_text_test.setOnClickListener(this)
+        warning_confirm_test.setOnClickListener(this)
+        warning_cancel_test.setOnClickListener(this)
+        custom_img_test.setOnClickListener(this)
+        progress_dialog.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -51,13 +51,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 .setTitleText("Are you sure?")
                 .setContentText("Won't be able to recover this file!")
                 .setConfirmText("Yes,delete it!")
-                .setConfirmClickListener { sDialog -> // reuse previous dialog instance
-                    sDialog.setTitleText("Deleted!")
-                        .setContentText("Your imaginary file has been deleted!")
-                        .setConfirmText("OK")
-                        .setConfirmClickListener(null)
-                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
-                }
+                .setConfirmClickListener(object : SweetAlertDialog.OnSweetListener {
+                    override fun onClick(dialog: SweetAlertDialog) {
+                        dialog.setTitleText("Deleted!")
+                            .setContentText("Your imaginary file has been deleted!")
+                            .setConfirmText("OK")
+                            .setConfirmClickListener(null)
+                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+                    }
+                })
                 .show()
             R.id.warning_cancel_test -> SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setTitleText("Are you sure?")
@@ -65,32 +67,36 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 .setCancelText("No,cancel plx!")
                 .setConfirmText("Yes,delete it!")
                 .showCancelButton(true)
-                .setCancelClickListener { sDialog -> // reuse previous dialog instance, keep widget user state, reset them if you need
-                    sDialog.setTitleText("Cancelled!")
-                        .setContentText("Your imaginary file is safe :)")
-                        .setConfirmText("OK")
-                        .showCancelButton(false)
-                        .setCancelClickListener(null)
-                        .setConfirmClickListener(null)
-                        .changeAlertType(SweetAlertDialog.ERROR_TYPE)
+                .setCancelClickListener(object : SweetAlertDialog.OnSweetListener {
+                    override fun onClick(dialog: SweetAlertDialog) {
+                        dialog.setTitleText("Cancelled!")
+                            .setContentText("Your imaginary file is safe :)")
+                            .setConfirmText("OK")
+                            .showCancelButton(false)
+                            .setCancelClickListener(null)
+                            .setConfirmClickListener(null)
+                            .changeAlertType(SweetAlertDialog.ERROR_TYPE)
 
-                    // or you can new a SweetAlertDialog to show
-                    /* sDialog.dismiss();
-                                                        new SweetAlertDialog(SampleActivity.this, SweetAlertDialog.ERROR_TYPE)
-                                                                .setTitleText("Cancelled!")
-                                                                .setContentText("Your imaginary file is safe :)")
-                                                                .setConfirmText("OK")
-                                                                .show();*/
-                }
-                .setConfirmClickListener { sDialog ->
-                    sDialog.setTitleText("Deleted!")
-                        .setContentText("Your imaginary file has been deleted!")
-                        .setConfirmText("OK")
-                        .showCancelButton(false)
-                        .setCancelClickListener(null)
-                        .setConfirmClickListener(null)
-                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
-                }
+                        // or you can new a SweetAlertDialog to show
+                        /* dialog.dismiss();
+                            SweetAlertDialog(SampleActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Cancelled!")
+                                    .setContentText("Your imaginary file is safe :)")
+                                    .setConfirmText("OK")
+                                    .show();*/
+                    }
+                })
+                .setConfirmClickListener(object : SweetAlertDialog.OnSweetListener {
+                    override fun onClick(dialog: SweetAlertDialog) {
+                        dialog.setTitleText("Deleted!")
+                            .setContentText("Your imaginary file has been deleted!")
+                            .setConfirmText("OK")
+                            .showCancelButton(false)
+                            .setCancelClickListener(null)
+                            .setConfirmClickListener(null)
+                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+                    }
+                })
                 .show()
             R.id.custom_img_test -> SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                 .setTitleText("Sweet!")
@@ -98,9 +104,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 .setCustomImage(R.drawable.custom_img)
                 .show()
             R.id.progress_dialog -> {
-                val pDialog =
-                    SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
-                        .setTitleText("Loading")
+                val pDialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                pDialog.setTitleText("Loading")
                 pDialog.show()
                 pDialog.setCancelable(false)
                 object : CountDownTimer(800 * 7, 800) {
@@ -109,19 +114,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         i++
                         when (i) {
                             0 -> pDialog.progressHelper.barColor =
-                                resources.getColor(R.color.blue_btn_bg_color)
+                                color(R.color.blue_btn_bg_color)
                             1 -> pDialog.progressHelper.barColor =
-                                resources.getColor(R.color.material_deep_teal_50)
+                                color(R.color.material_deep_teal_50)
                             2 -> pDialog.progressHelper.barColor =
-                                resources.getColor(R.color.success_stroke_color)
+                                color(R.color.success_stroke_color)
                             3 -> pDialog.progressHelper.barColor =
-                                resources.getColor(R.color.material_deep_teal_20)
+                                color(R.color.material_deep_teal_20)
                             4 -> pDialog.progressHelper.barColor =
-                                resources.getColor(R.color.material_blue_grey_80)
+                                color(R.color.material_blue_grey_80)
                             5 -> pDialog.progressHelper.barColor =
-                                resources.getColor(R.color.warning_stroke_color)
+                                color(R.color.warning_stroke_color)
                             6 -> pDialog.progressHelper.barColor =
-                                resources.getColor(R.color.success_stroke_color)
+                                color(R.color.success_stroke_color)
                         }
                     }
 

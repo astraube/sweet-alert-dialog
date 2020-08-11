@@ -10,7 +10,7 @@
         android:toAlpha="1"
         android:duration="400"/>
 
-    <sweet:br.com.andrestraube.sweetalert.Rotate3dAnimation
+    <sweet:com.github.astraube.Rotate3dAnimation
         sweet:rollType="x"
         sweet:fromDeg="100"
         sweet:toDeg="0"
