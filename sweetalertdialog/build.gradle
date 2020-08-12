@@ -26,7 +26,7 @@ dependencies {
 }
 
 
-/*
+
 apply plugin: 'maven'
 
 uploadArchives {
@@ -35,7 +35,8 @@ uploadArchives {
             repository(url: uri('repo'))
         }
     }
-}*/
+}
+
 //apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
 
 apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
