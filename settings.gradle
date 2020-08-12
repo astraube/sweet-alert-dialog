@@ -1,0 +1,3 @@
+include ':sweetalertdialog'
+include ':app'
+rootProject.name = "Sweet Alert Dialog Kotlin"
