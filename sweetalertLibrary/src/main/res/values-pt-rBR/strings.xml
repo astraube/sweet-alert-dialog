@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">SweetAlertDialog</string>
+<resources>
+    <string name="app_name">SweetAlertDialogKotlin</string>
     <string name="dialog_default_title">Mensagem!</string>
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancelar</string>

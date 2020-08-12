@@ -3,4 +3,3 @@
     <solid android:color="@android:color/transparent" />
     <stroke android:color="@color/trans_success_stroke_color" android:width="@dimen/common_circle_width" />
 </shape>
-

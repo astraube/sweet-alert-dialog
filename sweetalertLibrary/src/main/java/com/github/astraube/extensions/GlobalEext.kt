@@ -3,9 +3,13 @@ package com.github.astraube.extensions
 import android.content.Context
 import android.os.Build
 import android.os.Handler
+import android.util.DisplayMetrics
 import android.util.TypedValue
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.ColorRes
+import androidx.annotation.LayoutRes
 
 /**
  * @author Andre Straube
@@ -23,30 +27,56 @@ inline fun <T, R> whenNotNull(input: T?, block: (T)->R): R? {
 fun String?.isNotNullOrEmpty() = !this.isNullOrEmpty()
 fun String?.isNotNullOrBlank() = !this.isNullOrBlank()
 
+fun Context.inflate(@LayoutRes res: Int, parent: ViewGroup? = null): View {
+    return LayoutInflater.from(this).inflate(res, parent, false)
+}
+
+fun Context.inflate(@LayoutRes res: Int, parent: ViewGroup? = null, attachToRoot: Boolean): View {
+    return LayoutInflater.from(this).inflate(res, parent, attachToRoot)
+}
+
 infix fun Context.color(@ColorRes id: Int) = when {
     isAtLeastMarshmallow() -> resources.getColor(id, null) else -> resources.getColor(id)
 }
 
-fun Context.dpToPx(dp: Float): Float = this.valueToPixels(TypedValue.COMPLEX_UNIT_DIP, dp)
-fun Context.dpToSp(dp: Float): Float = this.valueToPixels(TypedValue.COMPLEX_UNIT_SP, dp)
-fun Context.dpToPt(dp: Float): Float = this.valueToPixels(TypedValue.COMPLEX_UNIT_PT, dp)
-fun Context.dpToIn(dp: Float): Float = this.valueToPixels(TypedValue.COMPLEX_UNIT_IN, dp)
-fun Context.dpToMm(dp: Float): Float = this.valueToPixels(TypedValue.COMPLEX_UNIT_MM, dp)
+fun Context.toDp(value: Int, metrics: DisplayMetrics = this.resources.displayMetrics): Float = this.valueToDimension(TypedValue.COMPLEX_UNIT_DIP, value, metrics)
+fun Context.toDp(value: Float, metrics: DisplayMetrics = this.resources.displayMetrics): Float = this.valueToDimension(TypedValue.COMPLEX_UNIT_DIP, value, metrics)
+
+fun Context.toSp(value: Int, metrics: DisplayMetrics = this.resources.displayMetrics): Float = this.valueToDimension(TypedValue.COMPLEX_UNIT_SP, value, metrics)
+fun Context.toSp(value: Float, metrics: DisplayMetrics = this.resources.displayMetrics): Float = this.valueToDimension(TypedValue.COMPLEX_UNIT_SP, value, metrics)
+
+fun Context.toPt(value: Int, metrics: DisplayMetrics = this.resources.displayMetrics): Float = this.valueToDimension(TypedValue.COMPLEX_UNIT_PT, value, metrics)
+fun Context.toPt(value: Float, metrics: DisplayMetrics = this.resources.displayMetrics): Float = this.valueToDimension(TypedValue.COMPLEX_UNIT_PT, value, metrics)
+
+fun Context.toIn(value: Int, metrics: DisplayMetrics = this.resources.displayMetrics): Float = this.valueToDimension(TypedValue.COMPLEX_UNIT_IN, value, metrics)
+fun Context.toIn(value: Float, metrics: DisplayMetrics = this.resources.displayMetrics): Float = this.valueToDimension(TypedValue.COMPLEX_UNIT_IN, value, metrics)
+
+fun Context.toMm(value: Int, metrics: DisplayMetrics = this.resources.displayMetrics): Float = this.valueToDimension(TypedValue.COMPLEX_UNIT_MM, value, metrics)
+fun Context.toMm(value: Float, metrics: DisplayMetrics = this.resources.displayMetrics): Float = this.valueToDimension(TypedValue.COMPLEX_UNIT_MM, value, metrics)
 
 /**
- * Convenience method to convert a value in the given dimension to pixels.
- * @param value
- * @param dimen
- * @return
+ * Converts an unpacked complex data value holding a dimension to its final floating
+ * point value. The two parameters <var>unit</var> and <var>value</var>
+ * are as in {@link #TypedValue.TYPE_DIMENSION}.
+ *
+ * @param unit The unit to convert from.
+ * @param value The value to apply the unit to.
+ * @param metrics Current display metrics to use in the conversion --
+ *                supplies display density and scaling information.
+ * @return The complex floating point value multiplied by the appropriate
+ * metrics depending on its unit.
  */
-fun Context.valueToPixels(dimen: Int, value: Float): Float {
-    return if (dimen in TypedValue.COMPLEX_UNIT_PX..TypedValue.COMPLEX_UNIT_MM) {
+fun Context.valueToDimension(unit: Int, value: Float, metrics: DisplayMetrics = this.resources.displayMetrics): Float {
+    return if (unit in TypedValue.COMPLEX_UNIT_PX..TypedValue.COMPLEX_UNIT_MM) {
         TypedValue.applyDimension(
-            dimen,
+            unit,
             value,
-            this.resources.displayMetrics
+            metrics
         )
     } else value
+}
+fun Context.valueToDimension(unit: Int, value: Int, metrics: DisplayMetrics = this.resources.displayMetrics): Float {
+    return this.valueToDimension(unit, value.toFloat(), metrics)
 }
 
 /**

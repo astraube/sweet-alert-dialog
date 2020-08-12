@@ -17,7 +17,7 @@ The simplest way to use SweetAlertDialog is to add the library as aar dependency
 
 show material progress
 
-    val pDialog: SweetAlertDialog = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+    val pDialog: SweetAlertDialog = SweetAlertDialog(this, SweetAlertType.PROGRESS_TYPE)
     pDialog.progressHelper.barColor = Color.parseColor("#A5DC86")
     pDialog.setTitleText("Loading")
     pDialog.setCancelable(false)
@@ -65,14 +65,14 @@ A title with a text under：
 
 A error message：
 
-    SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+    SweetAlertDialog(this, SweetAlertType.ERROR_TYPE)
         .setTitleText("Oops...")
         .setContentText("Something went wrong!")
         .show()
 
 A warning message：
 
-    SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+    SweetAlertDialog(this, SweetAlertType.WARNING_TYPE)
         .setTitleText("Are you sure?")
         .setContentText("Won't be able to recover this file!")
         .setConfirmText("Yes,delete it!")
@@ -80,14 +80,14 @@ A warning message：
 
 A success message：
 
-    SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+    SweetAlertDialog(this, SweetAlertType.SUCCESS_TYPE)
         .setTitleText("Good job!")
         .setContentText("You clicked the button!")
         .show()
 
 A message with a custom icon：
 
-    SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+    SweetAlertDialog(this, SweetAlertType.CUSTOM_IMAGE_TYPE)
         .setTitleText("Sweet!")
         .setContentText("Here's a custom image.")
         .setCustomImage(R.drawable.custom_img)
@@ -95,7 +95,7 @@ A message with a custom icon：
 
 Bind the listener to confirm button：
 
-    SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+    SweetAlertDialog(this, SweetAlertType.WARNING_TYPE)
         .setTitleText("Are you sure?")
         .setContentText("Won't be able to recover this file!")
         .setConfirmText("Yes,delete it!")
@@ -108,7 +108,7 @@ Bind the listener to confirm button：
 
 Show the cancel button and bind listener to it：
 
-    SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+    SweetAlertDialog(this, SweetAlertType.WARNING_TYPE)
         .setTitleText("Are you sure?")
         .setContentText("Won't be able to recover this file!")
         .setCancelText("No,cancel plx!")
@@ -123,7 +123,7 @@ Show the cancel button and bind listener to it：
 
 **Change** the dialog style upon confirming：
 
-    SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+    SweetAlertDialog(this, SweetAlertType.WARNING_TYPE)
         .setTitleText("Are you sure?")
         .setContentText("Won't be able to recover this file!")
         .setConfirmText("Yes,delete it!")
@@ -134,7 +134,7 @@ Show the cancel button and bind listener to it：
                     .setContentText("Your imaginary file has been deleted!")
                     .setConfirmText("OK")
                     .setConfirmClickListener(null)
-                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
+                    .changeAlertType(SweetAlertType.SUCCESS_TYPE)
             }
         })
         .show()

@@ -13,14 +13,6 @@ infix fun Context.color(@ColorRes id: Int) = when {
     isAtLeastMarshmallow() -> resources.getColor(id, null) else -> resources.getColor(id)
 }
 
-
-/**
- * Delay to execute a task
- */
-fun postDelayed(delayMillis: Long, task: () -> Unit) {
-    Handler().postDelayed(task, delayMillis)
-}
-
 /**
  * Check Version API Android
  */

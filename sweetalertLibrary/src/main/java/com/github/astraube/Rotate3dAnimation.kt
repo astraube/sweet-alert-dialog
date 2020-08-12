@@ -99,8 +99,8 @@ class Rotate3dAnimation : Animation {
             d.value = 0f
         } else {
             if (value.type == TypedValue.TYPE_FRACTION) {
-                d.type = if (value.data and TypedValue.COMPLEX_UNIT_MASK ==
-                    TypedValue.COMPLEX_UNIT_FRACTION_PARENT
+                d.type = if (value.data and TypedValue.COMPLEX_UNIT_MASK
+                    == TypedValue.COMPLEX_UNIT_FRACTION_PARENT
                 ) RELATIVE_TO_PARENT else RELATIVE_TO_SELF
                 d.value = TypedValue.complexToFloat(value.data)
                 return d
