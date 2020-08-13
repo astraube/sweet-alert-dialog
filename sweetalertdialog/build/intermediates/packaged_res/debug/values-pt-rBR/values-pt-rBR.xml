@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="LOADING">Carregando…</string>
+    <string name="app_name">SweetAlertDialogKotlin</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="dialog_default_title">Mensagem!</string>
+    <string name="dialog_ok">OK</string>
+</resources>

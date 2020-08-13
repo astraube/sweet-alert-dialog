@@ -1,0 +1,12 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.github.astraube.sweetalertdialog"
+4    android:versionName=".debug" >
+5
+6    <uses-sdk android:minSdkVersion="16" />
+6-->C:\Workspaces\kotlin\SweetAlertDialog\sweetalertdialog\src\main\AndroidManifest.xml
+7
+8    <application />
+8-->C:\Workspaces\kotlin\SweetAlertDialog\sweetalertdialog\src\main\AndroidManifest.xml:2:5-20
+9
+10</manifest>

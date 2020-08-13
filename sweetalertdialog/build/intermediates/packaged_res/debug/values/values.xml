@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_btn_bg_color">#AEDEF4</color>
+    <color name="blue_btn_bg_pressed_color">#96BFD2</color>
+    <color name="blue_progress_bar_color">#5588FF</color>
+    <color name="button_text_color">#FFFFFF</color>
+    <color name="error_stroke_color">#F27474</color>
+    <color name="float_transparent">#00000000</color>
+    <color name="gray_btn_bg_color">#D0D0D0</color>
+    <color name="gray_btn_bg_pressed_color">#B6B6B6</color>
+    <color name="material_blue_grey_80">#ff37474f</color>
+    <color name="material_blue_grey_90">#ff263238</color>
+    <color name="material_blue_grey_95">#ff21272b</color>
+    <color name="material_deep_teal_20">#ff80cbc4</color>
+    <color name="material_deep_teal_50">#ff009688</color>
+    <color name="red_btn_bg_color">#DD6B55</color>
+    <color name="red_btn_bg_pressed_color">#CD5B55</color>
+    <color name="success_stroke_color">#A5DC86</color>
+    <color name="sweet_dialog_bg_color">#FFFFFF</color>
+    <color name="text_color_10">#575757</color>
+    <color name="text_color_20">#797979</color>
+    <color name="trans_success_stroke_color">#33A5DC86</color>
+    <color name="warning_stroke_color">#F8BB86</color>
+    <dimen name="alert_width">310dp</dimen>
+    <dimen name="common_circle_width">3dp</dimen>
+    <dimen name="progress_circle_radius">34dp</dimen>
+    <item name="dialogContainer" type="id"/>
+    <item name="error" type="id"/>
+    <item name="progress" type="id"/>
+    <item name="success" type="id"/>
+    <item name="tvContent" type="id"/>
+    <item name="tvTitle" type="id"/>
+    <item name="warning" type="id"/>
+    <string name="LOADING">Loading…</string>
+    <string name="app_name">SweetAlertDialogKotlin</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_default_title">Message!</string>
+    <string name="dialog_ok">OK</string>
+    <style name="SweetStyle.Button" parent="android:Widget.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">38dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingLeft">21dp</item>
+        <item name="android:paddingRight">21dp</item>
+        <item name="android:textColor">@color/button_text_color</item>
+    </style>
+    <style name="SweetStyle.Button.Blue" parent="SweetStyle.Button">
+        <item name="android:background">@drawable/sweet_button_blue_background</item>
+    </style>
+    <style name="SweetStyle.Button.Gray" parent="SweetStyle.Button">
+        <item name="android:background">@drawable/sweet_button_gray_background</item>
+    </style>
+    <style name="SweetStyle.Button.Red" parent="SweetStyle.Button">
+        <item name="android:background">@drawable/sweet_button_red_background</item>
+    </style>
+    <style name="SweetStyle.Dialog" parent="android:Theme.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowBackground">@color/float_transparent</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.4</item>
+    </style>
+    <style name="SweetStyle.Text.Content" parent="android:Widget.TextView">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_color_20</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="SweetStyle.Text.Title" parent="android:Widget.TextView">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/text_color_10</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <declare-styleable name="ProgressWheel">
+        <attr format="boolean" name="progressProgressIndeterminate"/>
+        <attr format="color" name="progressBarColor"/>
+        <attr format="color" name="progressRimColor"/>
+        <attr format="dimension" name="progressRimWidth"/>
+        <attr format="float" name="progressSpinSpeed"/>
+        <attr format="integer" name="progressBarSpinCycleTime"/>
+        <attr format="dimension" name="progressCircleRadius"/>
+        <attr format="boolean" name="progressFillRadius"/>
+        <attr format="dimension" name="progressBarWidth"/>
+        <attr format="boolean" name="progressLinearProgress"/>
+    </declare-styleable>
+    <declare-styleable name="Rotate3dAnimation">
+        <attr format="enum" name="rotateRollType">
+            <enum name="x" value="0"/>
+            <enum name="y" value="1"/>
+            <enum name="z" value="2"/>
+        </attr>
+        <attr format="float" name="rotateFromDeg"/>
+        <attr format="float" name="rotateToDeg"/>
+        <attr format="fraction" name="rotatePivotX"/>
+        <attr format="fraction" name="rotatePivotY"/>
+    </declare-styleable>
+</resources>
