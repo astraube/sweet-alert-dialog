@@ -12,9 +12,22 @@ android {
     defaultConfig {
         minSdkVersion 16
     }
-
     lintOptions {
         abortOnError false
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            debuggable false
+        }
+        debug {
+            versionNameSuffix '.debug'
+            debuggable true
+        }
+        staging {
+            initWith debug
+            versionNameSuffix '.debugStaging'
+        }
     }
 }
 

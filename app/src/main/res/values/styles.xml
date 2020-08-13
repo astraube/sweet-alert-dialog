@@ -1,14 +1,62 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Base" parent="Theme.MaterialComponents.Light.NoActionBar" />
+
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.Base">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryVariant">#000000</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#2962FF</item>
+        <item name="colorSecondaryVariant">#0039CB</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorError">#F44336</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#212121</item>
+        <item name="android:colorBackground">@color/gray_50</item>
+        <item name="colorOnBackground">#212121</item>
     </style>
 
 
-    <style name="my_dialog_blue_button" parent="android:Widget.Button">
+    <style name="Switch.Base" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:textColor">@color/colorText1</item>
+        <item name="android:padding">@dimen/spacing_middle</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@null</item>
+        <item name="android:textAppearance">?attr/textAppearanceSubtitle1</item>
+        <item name="textInputLayoutFocusedRectEnabled">false</item>
+    </style>
+
+    <!-- @usage: style="@style/Switch.Default" -->
+    <style name="Switch.Default" parent="Switch.Base">
+        <item name="thumbTint">@drawable/switch_thumb_selector</item>
+        <item name="trackTint">@drawable/switch_track_selector</item>
+    </style>
+
+    <!-- @usage: android:theme="@style/SwitchThemeGreenLight" -->
+    <style name="SwitchThemeGreenLight">
+        <item name="android:padding">@dimen/spacing_middle</item>
+        <item name="colorControlActivated">@color/colorGreenLight</item>
+    </style>
+
+    <!-- Custom View - SwitchCompatTheme -->
+    <style name="TextField.InputLayout.Default" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxStrokeErrorColor">@color/colorRedDark</item>
+        <item name="boxStrokeWidth">@dimen/field_stroke_width</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_small</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_small</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_radius_small</item>
+        <item name="boxCornerRadiusTopStart">@dimen/corner_radius_small</item>
+        <item name="passwordToggleTint">@color/colorStrokeWithoutElevation</item>
+        <item name="android:padding">@dimen/spacing_xsmall</item>
+    </style>
+
+
+    <style name="custom_dialog_blue_button" parent="android:Widget.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">31dp</item>
         <item name="android:background">@drawable/sample_sweet_button_background</item>
@@ -16,6 +64,13 @@
         <item name="android:paddingLeft">21dp</item>
         <item name="android:paddingRight">21dp</item>
         <item name="android:textColor">@color/button_text_color</item>
+    </style>
+
+    <!--
+        SweetAlert Styles - Sobescrita de estilos do componente SweetAlert
+    -->
+    <style name="SweetStyle.Button.Blue" parent="SweetStyle.Button">
+        <item name="android:background">@drawable/sample_sweet_button_background</item>
     </style>
 
 </resources>

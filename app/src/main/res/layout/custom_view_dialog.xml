@@ -2,37 +2,184 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch1"
+        style="@style/Switch.Default"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        android:layout_marginTop="@dimen/spacing_middle"
+        android:checked="true"
+        android:text="Avisar se não estiver no horário"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/container_2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/spacing_middle"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/switch1">
+        <ToggleButton
+            android:id="@+id/toggleDom"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:background="@drawable/togglebutton_selector"
+            android:textColor="@color/colorText1"
+            android:textStyle="bold"
+            android:tag="SUNDAY"
+            android:text="S"
+            android:textOn="D"
+            android:textOff="D"/>
+        <ToggleButton
+            android:id="@+id/toggleSeg"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:background="@drawable/togglebutton_selector"
+            android:textColor="@color/colorGrayDark"
+            android:textStyle="bold"
+            android:tag="MONDAY"
+            android:text="S"
+            android:textOn="S"
+            android:textOff="S"/>
+        <ToggleButton
+            android:id="@+id/toggleTer"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:background="@drawable/togglebutton_selector"
+            android:textColor="@color/colorGrayDark"
+            android:textStyle="bold"
+            android:tag="TUESDAY"
+            android:text="T"
+            android:textOn="T"
+            android:textOff="T"/>
+        <ToggleButton
+            android:id="@+id/toggleQua"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:background="@drawable/togglebutton_selector"
+            android:textColor="@color/colorGrayDark"
+            android:textStyle="bold"
+            android:tag="WEDNESDAY"
+            android:text="Q"
+            android:textOn="Q"
+            android:textOff="Q" />
+        <ToggleButton
+            android:id="@+id/toggleQui"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:background="@drawable/togglebutton_selector"
+            android:textColor="@color/colorGrayDark"
+            android:textStyle="bold"
+            android:tag="THURSDAY"
+            android:text="Q"
+            android:textOn="Q"
+            android:textOff="Q" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        <ToggleButton
+            android:id="@+id/toggleSex"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:background="@drawable/togglebutton_selector"
+            android:textColor="@color/colorGrayDark"
+            android:textStyle="bold"
+            android:tag="FRIDAY"
+            android:text="S"
+            android:textOn="S"
+            android:textOff="S"/>
+        <ToggleButton
+            android:id="@+id/toggleSab"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="@dimen/spacing_small"
+            android:background="@drawable/togglebutton_selector"
+            android:textColor="@color/colorGrayDark"
+            android:textStyle="bold"
+            android:tag="SATURDAY"
+            android:text="S"
+            android:textOn="S"
+            android:textOff="S"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <LinearLayout
+        android:id="@+id/container_4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/spacing_middle"
+        android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/container_2">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtInputHourInit"
+            style="@style/TextField.InputLayout.Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            app:boxBackgroundMode="outline">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etStartTime"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:imeOptions="actionUnspecified"
+                android:inputType="number"
+                android:digits=":1234567890"
+                android:maxLines="1"
+                android:maxLength="5"
+                android:singleLine="true"
+                android:textAlignment="center"
+                android:hint="Início"
+                android:text="13:00"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="às"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtInputHourEnd"
+            style="@style/TextField.InputLayout.Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_medium"
+            android:layout_marginStart="@dimen/spacing_medium"
+            app:boxBackgroundMode="outline">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etInitTime"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:imeOptions="actionUnspecified"
+                android:inputType="number"
+                android:digits=":1234567890"
+                android:maxLines="1"
+                android:maxLength="5"
+                android:singleLine="true"
+                android:textAlignment="center"
+                android:hint="Fim"
+                android:text="15:30"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
