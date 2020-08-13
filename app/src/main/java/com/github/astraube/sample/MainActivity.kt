@@ -1,15 +1,19 @@
 package com.github.astraube.sample
 
-import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.TypedValue
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import android.widget.TextView
+import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
-import com.github.astraube.SweetAlertDialog
-import com.github.astraube.SweetAlertType
-import com.github.astraube.extensions.*
+import androidx.appcompat.widget.SwitchCompat
+import com.github.astraube.sweetalertdialog.SweetAlertDialog
+import com.github.astraube.sweetalertdialog.SweetAlertType
+import com.github.astraube.sweetalertdialog.extensions.getAllViews
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -32,17 +36,81 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         progress_dialog.setOnClickListener(this)
     }
 
-    override fun onClick(v: View) {
+    private fun getTextWatcherTime(et: EditText): TextWatcher {
+        return object : TextWatcher {
+            val DELIMITER = ":"
+            var beforeLength = 0
 
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                beforeLength = et.length()
+            }
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                val digits: Int = et.text.toString().length
+                if (beforeLength < digits && (digits == 2)) {
+                    et.append(DELIMITER)
+                }
+                /*
+                // prevent input dash by user
+                if (android.R.attr.digits > 0 && android.R.attr.digits != 4 && android.R.attr.digits != 8) {
+                    val last = s.subSequence(android.R.attr.digits - 1, android.R.attr.digits)
+                    if (last.toString() == DELIMITER) et.text
+                        .delete(android.R.attr.digits - 1, android.R.attr.digits)
+                }
+                // inset and remove dash
+                if (android.R.attr.digits == 3 || android.R.attr.digits == 7) {
+                    if (lastChar != DELIMITER) et.append(DELIMITER) // insert a dash
+                    else et.text.delete(android.R.attr.digits - 1, android.R.attr.digits) // delete last digit with a dash
+                }*/
+            }
+            override fun afterTextChanged(s: Editable) {}
+        }
+    }
+
+    override fun onClick(v: View) {
         when (v.id) {
             R.id.custom_view -> {
                 val sad = SweetAlertDialog.Builder(this, SweetAlertType.CUSTOM_VIEW_TYPE)
                     .title("Custom View Dialog")
                     .customView(R.layout.custom_view_dialog)
+                    .confirmListener(object : SweetAlertDialog.OnSweetListener {
+                        override fun onClick(dialog: SweetAlertDialog) {
+                            val viewDialog = dialog.getCustomView()
+                            viewDialog?.also { root ->
+
+                                root.findViewById<SwitchCompat>(R.id.switch1)?.let {
+                                    println("------> switch1 : ${it.isChecked}")
+                                }
+
+                                root.findViewById<ViewGroup>(R.id.container_2)?.let {
+                                    it.getAllViews().forEach {  child ->
+                                        if (child is ToggleButton) {
+                                            println("------> ${child.tag} : ${child.text} : ${child.isChecked}")
+                                        }
+                                    }
+                                }
+
+                                root.findViewById<TextInputEditText>(R.id.etStartTime)?.let {
+                                    println("------> Start Time : ${it.text}")
+                                }
+                                root.findViewById<TextInputEditText>(R.id.etInitTime)?.let {
+                                    println("------> Init Time : ${it.text}")
+                                }
+                            }
+                            dialog.dismiss()
+                        }
+                    })
                     .buildShow()
 
-                sad.getCustomView()?.findViewById<TextView>(R.id.textView)?.let {
-                    it.text = "Hi, i'm custom view dialog!"
+                val viewDialog = sad.getCustomView()
+                val timeTextWatcher = NumberTextWatcher(NumberTextWatcher.MASK_HH_MM)
+
+                viewDialog?.also { root ->
+                    root.findViewById<TextInputEditText>(R.id.etStartTime)?.let {
+                        it.addTextChangedListener(timeTextWatcher)
+                    }
+                    root.findViewById<TextInputEditText>(R.id.etInitTime)?.let {
+                        it.addTextChangedListener(timeTextWatcher)
+                    }
                 }
             }
             R.id.basic_test -> {
@@ -96,7 +164,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                             .changeAlertType(SweetAlertType.ERROR_TYPE)
 
                         // or you can new a SweetAlertDialog to show
-                        /* dialog.dismiss();
+                        /* dialog.dismiss()
                             SweetAlertDialog(SampleActivity.this, SweetAlertType.ERROR_TYPE)
                                     .setTitleText("Cancelled!")
                                     .setContentText("Your imaginary file is safe :)")
@@ -148,7 +216,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                 color(R.color.success_stroke_color)
                         }
                     }
-
                     override fun onFinish() {
                         i = -1
                         pDialog.setTitleText("Success!")

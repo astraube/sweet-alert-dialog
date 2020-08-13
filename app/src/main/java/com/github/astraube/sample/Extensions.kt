@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.github.astraube.sample
 
 import android.content.Context

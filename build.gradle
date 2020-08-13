@@ -4,6 +4,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
@@ -14,10 +15,16 @@ buildscript {
     }
 }
 
+ext {
+    compileSdkVersion = 29
+    buildToolsVersion = "29.0.2"
+}
+
 allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
 }
 

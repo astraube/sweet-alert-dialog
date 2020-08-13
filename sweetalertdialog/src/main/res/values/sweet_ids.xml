@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="error" />
+    <item type="id" name="warning" />
+    <item type="id" name="success" />
+    <item type="id" name="progress" />
+    <item type="id" name="dialogContainer" />
+    <item type="id" name="tvTitle" />
+    <item type="id" name="tvContent" />
+</resources>
