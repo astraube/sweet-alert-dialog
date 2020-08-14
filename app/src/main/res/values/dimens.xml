@@ -7,8 +7,7 @@
     <dimen name="corner_radius_xmedium">20dp</dimen>
     <dimen name="corner_radius_large">26dp</dimen>
 
-    <!-- TextInput -->
-    <dimen name="field_stroke_width">1dp</dimen>
+    <dimen name="stroke_width">1dp</dimen>
 
     <!-- general spacing -->
     <dimen name="spacing_xsmall">2dp</dimen>

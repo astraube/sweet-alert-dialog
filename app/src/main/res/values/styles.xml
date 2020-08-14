@@ -1,14 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.Base" parent="Theme.MaterialComponents.Bridge" />
-
-    <style name="Theme.Base.NoActionBar">
+    <style name="Theme.Base" parent="Theme.MaterialComponents.Light" />
+    <style name="Theme.Base.NoActionBar" >
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Base.NoActionBar">
+        <item name="checkboxStyle">@style/Widget.App.CheckBox</item>
+        <item name="switchStyle">@style/Widget.App.Switch</item>
+
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorPrimaryVariant">#000000</item>
@@ -21,47 +23,72 @@
         <item name="colorOnError">#FFFFFF</item>
         <item name="colorSurface">#FFFFFF</item>
         <item name="colorOnSurface">#212121</item>
-        <item name="android:colorBackground">@color/gray_50</item>
         <item name="colorOnBackground">#212121</item>
+        <item name="android:colorBackground">@color/gray_50</item>
+        <item name="android:textColor">@color/colorText1</item>
+        <item name="android:textColorPrimary">@color/colorText1</item>
+        <item name="android:textColorSecondary">@color/colorText2</item>
+        <item name="android:textColorTertiary">@color/colorText3</item>
     </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
-
-    <style name="Switch.Base" parent="Widget.AppCompat.CompoundButton.Switch">
+    <!-- Switch Styles -->
+    <style name="Widget.App.Switch" parent="Widget.AppCompat.CompoundButton.Switch">
         <item name="android:textColor">@color/colorText1</item>
         <item name="android:padding">@dimen/spacing_middle</item>
         <item name="android:textSize">16sp</item>
         <item name="android:background">@null</item>
         <item name="android:textAppearance">?attr/textAppearanceSubtitle1</item>
         <item name="textInputLayoutFocusedRectEnabled">false</item>
-    </style>
-
-    <!-- @usage: style="@style/Switch.Default" -->
-    <style name="Switch.Default" parent="Switch.Base">
-        <item name="thumbTint">@drawable/switch_thumb_selector</item>
         <item name="trackTint">@drawable/switch_track_selector</item>
+        <item name="thumbTint">@drawable/switch_thumb_selector</item>
     </style>
 
-    <!-- @usage: android:theme="@style/SwitchThemeGreenLight" -->
-    <style name="SwitchThemeGreenLight">
-        <item name="android:padding">@dimen/spacing_middle</item>
-        <item name="colorControlActivated">@color/colorGreenLight</item>
-    </style>
-
-    <!-- Custom View - SwitchCompatTheme -->
-    <style name="TextField.InputLayout.Default" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">@color/colorPrimary</item>
+    <!-- Custom View - InputLayout -->
+    <style name="Widget.App.InputLayout.Default" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/strokeGray</item>
         <item name="boxStrokeErrorColor">@color/colorRedDark</item>
-        <item name="boxStrokeWidth">@dimen/field_stroke_width</item>
+        <item name="boxStrokeWidth">@dimen/stroke_width</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_small</item>
         <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_small</item>
         <item name="boxCornerRadiusTopEnd">@dimen/corner_radius_small</item>
         <item name="boxCornerRadiusTopStart">@dimen/corner_radius_small</item>
-        <item name="passwordToggleTint">@color/colorStrokeWithoutElevation</item>
         <item name="android:padding">@dimen/spacing_xsmall</item>
     </style>
+
+    <!-- Custom View - CheckBox -->
+    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="android:background">@null</item>
+        <item name="android:button">@drawable/checkbox_selector</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorText1</item>
+        <item name="android:padding">@dimen/spacing_middle</item>
+        <item name="enforceTextAppearance">true</item>
+        <item name="enforceMaterialTheme">true</item>
+        <item name="useMaterialThemeColors">false</item>
+    </style>
+    <!-- START - exemplo de sobreposicao de cores -->
+    <style name="CheckBoxTheme.Tint1" parent="Widget.App.CheckBox">
+        <item name="android:background">@null</item>
+        <item name="useMaterialThemeColors">true</item>
+        <item name="buttonTint">@color/button_tint</item>
+    </style>
+    <style name="CheckBoxTheme.Tint2" parent="Widget.App.CheckBox">
+        <item name="useMaterialThemeColors">true</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.AppTheme.CheckBox</item>
+    </style>
+    <style name="ThemeOverlay.AppTheme.CheckBox" parent="">
+        <item name="colorOnSurface">@color/colorText2</item>
+        <item name="colorSecondary">@color/colorPrimaryDark</item>
+    </style>
+    <!-- END - exemplo de sobreposicao de cores -->
 
     <!--
         SweetAlert Styles - Overriding SweetAlert component styles
     -->
+    <style name="SweetAlert.Button.Blue" parent="SweetAlert.Button">
+        <item name="android:background">@drawable/sample_sweet_button_background</item>
+    </style>
 
 </resources>

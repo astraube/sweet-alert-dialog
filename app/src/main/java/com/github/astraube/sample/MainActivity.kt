@@ -5,15 +5,10 @@ import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SwitchCompat
 import com.github.astraube.sweetalertdialog.SweetAlertDialog
 import com.github.astraube.sweetalertdialog.SweetAlertType
-import com.github.astraube.sweetalertdialog.extensions.getAllViews
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -68,10 +63,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.custom_view -> {
+            /*R.id.custom_view -> {
                 val sad = SweetAlertDialog.Builder(this, SweetAlertType.CUSTOM_VIEW_TYPE)
                     .title("Custom View Dialog")
-                    .customView(R.layout.custom_view_dialog)
+                    .customView(R.layout.dialog_checkpoint_date)
                     .confirmListener(object : SweetAlertDialog.OnSweetListener {
                         override fun onClick(dialog: SweetAlertDialog) {
                             val viewDialog = dialog.getCustomView()
@@ -112,6 +107,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         it.addTextChangedListener(timeTextWatcher)
                     }
                 }
+            }*/
+            R.id.custom_view -> {
+                val sad = SweetAlertDialog.Builder(this, SweetAlertType.CUSTOM_VIEW_TYPE)
+                    .title("Custom View Dialog")
+                    .customView(R.layout.dialog_alerts_config)
+                    .confirmListener(object : SweetAlertDialog.OnSweetListener {
+                        override fun onClick(dialog: SweetAlertDialog) {
+                            dialog.dismiss()
+
+                            SweetAlertDialog.Builder(this@MainActivity, SweetAlertType.CUSTOM_VIEW_TYPE)
+                                .title("Custom View Dialog")
+                                .customView(R.layout.dialog_list_checkbox)
+                                .confirmListener(object : SweetAlertDialog.OnSweetListener {
+                                    override fun onClick(dialog: SweetAlertDialog) {
+                                        dialog.dismiss()
+                                    }
+                                })
+                                .buildShow()
+                        }
+                    })
+                    .buildShow()
+
+                val viewDialog = sad.getCustomView()
+                val timeTextWatcher = NumberTextWatcher(NumberTextWatcher.MASK_HH_MM)
             }
             R.id.basic_test -> {
                 // default title "Here's a message!"

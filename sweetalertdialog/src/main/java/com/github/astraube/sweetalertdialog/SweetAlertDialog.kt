@@ -31,7 +31,7 @@ import com.github.astraube.sweetalertdialog.extensions.inflate
 class SweetAlertDialog constructor(
     context: Context,
     val builderInfo: Builder
-) : Dialog(context, R.style.SweetStyle_Dialog) {
+) : Dialog(context, R.style.SweetAlert_Dialog) {
 
     constructor(context: Context): this(
         context,

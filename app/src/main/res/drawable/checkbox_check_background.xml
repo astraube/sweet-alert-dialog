@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <size
+                android:height="28dp"
+                android:width="28dp" />
+            <solid
+                android:color="@android:color/white" />
+            <stroke
+                android:width="@dimen/stroke_width"
+                android:color="@color/strokeGray" />
+            <corners
+                android:radius="@dimen/corner_radius_xsmall" />
+        </shape>
+    </item>
+    <item
+        android:bottom="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp"
+        android:drawable="@drawable/check"
+        android:width="26dp"
+        android:height="26dp"
+        tools:ignore="UnusedAttribute" >
+    </item>
+</layer-list>

@@ -125,14 +125,14 @@
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/SweetStyle.Text.Title"
+        android:textAppearance="@style/SweetAlert.Text.Title"
         android:text="@string/dialog_default_title" />
 
     <TextView
         android:id="@+id/content_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/SweetStyle.Text.Content"
+        android:textAppearance="@style/SweetAlert.Text.Content"
         android:textAlignment="center"
         android:gravity="center"
         android:visibility="gone" />
@@ -154,7 +154,7 @@
 
         <Button
             android:id="@+id/cancel_button"
-            style="@style/SweetStyle.Button.Blue"
+            style="@style/SweetAlert.Button.Blue"
             android:background="@drawable/sweet_button_gray_background"
             android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
@@ -163,7 +163,7 @@
 
         <Button
             android:id="@+id/confirm_button"
-            style="@style/SweetStyle.Button.Blue"
+            style="@style/SweetAlert.Button.Blue"
             android:text="@string/dialog_ok" />
     </LinearLayout>
 

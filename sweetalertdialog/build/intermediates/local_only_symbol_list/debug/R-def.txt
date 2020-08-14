@@ -87,12 +87,12 @@ string app_name
 string dialog_cancel
 string dialog_default_title
 string dialog_ok
-style SweetStyle.Button
-style SweetStyle.Button.Blue
-style SweetStyle.Button.Gray
-style SweetStyle.Button.Red
-style SweetStyle.Dialog
-style SweetStyle.Text.Content
-style SweetStyle.Text.Title
+style SweetAlert.Button
+style SweetAlert.Button.Blue
+style SweetAlert.Button.Gray
+style SweetAlert.Button.Red
+style SweetAlert.Dialog
+style SweetAlert.Text.Content
+style SweetAlert.Text.Title
 styleable ProgressWheel progressProgressIndeterminate progressBarColor progressRimColor progressRimWidth progressSpinSpeed progressBarSpinCycleTime progressCircleRadius progressFillRadius progressBarWidth progressLinearProgress
 styleable Rotate3dAnimation rotateRollType rotateFromDeg rotateToDeg rotatePivotX rotatePivotY
