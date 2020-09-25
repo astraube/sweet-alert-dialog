@@ -302,6 +302,12 @@ class SweetAlertDialog constructor(
         }
     }
 
+    fun setTitleText(@StringRes resId: Int): SweetAlertDialog {
+        return apply {
+            this.setTitleText(this.context.getString(resId))
+        }
+    }
+
     fun setCustomImage(drawable: Drawable?): SweetAlertDialog {
         return apply {
             builderInfo.customImgDrawable(drawable)

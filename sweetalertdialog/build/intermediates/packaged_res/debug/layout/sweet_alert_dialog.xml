@@ -17,7 +17,7 @@
         android:id="@+id/close_button"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:background="@drawable/sweet_button_bg_circle"
         android:src="@drawable/close"
         android:tint="#FFFFFF"
