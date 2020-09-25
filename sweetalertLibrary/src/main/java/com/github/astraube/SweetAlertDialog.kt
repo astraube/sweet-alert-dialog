@@ -1,4 +1,4 @@
-package com.github.astraube
+package com.github.astraube.sweetalertdialog
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -13,7 +13,6 @@ import android.view.animation.Animation
 import android.view.animation.Animation.AnimationListener
 import android.view.animation.AnimationSet
 import android.view.animation.Transformation
-import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
@@ -22,18 +21,17 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.MutableLiveData
-import com.github.astraube.OptAnimationLoader.loadAnimation
-import com.github.astraube.extensions.isNotNullOrBlank
-import com.github.astraube.extensions.visible
-import com.github.astraube.extensions.setBgRes
-import com.github.astraube.SweetAlertType.*
-import com.github.astraube.extensions.inflate
+import com.github.astraube.sweetalertdialog.OptAnimationLoader.loadAnimation
+import com.github.astraube.sweetalertdialog.extensions.isNotNullOrBlank
+import com.github.astraube.sweetalertdialog.extensions.visible
+import com.github.astraube.sweetalertdialog.extensions.setBgRes
+import com.github.astraube.sweetalertdialog.SweetAlertType.*
+import com.github.astraube.sweetalertdialog.extensions.inflate
 
 class SweetAlertDialog constructor(
     context: Context,
     val builderInfo: Builder
-) : Dialog(context, R.style.alert_dialog) {
+) : Dialog(context, R.style.SweetAlert_Dialog) {
 
     constructor(context: Context): this(
         context,
@@ -44,7 +42,7 @@ class SweetAlertDialog constructor(
         Builder(context).type(type)
     )
 
-    private var mDialogView: View? = null
+    private var rootView: View? = null
 
     private var mDialogContainer: ViewGroup? = null
     private var mDialogBg: Int? = null
@@ -66,7 +64,7 @@ class SweetAlertDialog constructor(
     private var mSuccessLeftMask: View? = null
     private var mSuccessRightMask: View? = null
     private var mCustomImage: ImageView? = null
-    private var mCustomView: FrameLayout? = null
+    private var mCustomViewContainer: FrameLayout? = null
     private var mWarningFrame: FrameLayout? = null
     private var mCloseFromCancel = false
     private var mConfirmAction: SweetActionButton? = null
@@ -153,7 +151,8 @@ class SweetAlertDialog constructor(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sweet_alert_dialog)
-        mDialogView = window!!.decorView.findViewById(android.R.id.content)
+        rootView = window!!.decorView.findViewById(android.R.id.content)
+
         mDialogContainer = findViewById<View>(R.id.dialogContainer) as ViewGroup
         mTitleTextView = findViewById<View>(R.id.title_text) as TextView
         mContentTextView = findViewById<View>(R.id.content_text) as TextView
@@ -165,7 +164,7 @@ class SweetAlertDialog constructor(
         mSuccessLeftMask = mSuccessFrame!!.findViewById(R.id.mask_left)
         mSuccessRightMask = mSuccessFrame!!.findViewById(R.id.mask_right)
         mCustomImage = findViewById<View>(R.id.custom_image) as ImageView
-        mCustomView = findViewById<View>(R.id.custom_view) as FrameLayout
+        mCustomViewContainer = findViewById<View>(R.id.custom_view) as FrameLayout
         mWarningFrame = findViewById<View>(R.id.warning_frame) as FrameLayout
         progressHelper.progressWheel = findViewById<View>(R.id.progressWheel) as ProgressWheel
 
@@ -188,7 +187,7 @@ class SweetAlertDialog constructor(
         mWarningFrame!!.visibility = View.GONE
         mProgressFrame!!.visibility = View.GONE
         mConfirmAction?.isVisible(true)
-        mConfirmAction?.backgroundResource = R.drawable.sweet_blue_button_background
+        mConfirmAction?.backgroundResource = R.drawable.sweet_button_blue_background
         mErrorFrame!!.clearAnimation()
         mErrorX!!.clearAnimation()
         mSuccessTick!!.clearAnimation()
@@ -209,7 +208,7 @@ class SweetAlertDialog constructor(
     private fun changeAlertType(alertType: SweetAlertType, fromCreate: Boolean) {
         builderInfo.type = alertType
         // call after created views
-        if (mDialogView != null) {
+        if (rootView != null) {
             if (!fromCreate) {
                 // restore all of views state before switching alert type
                 restore()
@@ -226,7 +225,7 @@ class SweetAlertDialog constructor(
                 }
                 WARNING_TYPE -> {
                     if (mConfirmAction?.backgroundResource == null)
-                        setConfirmBackground(R.drawable.sweet_red_button_background)
+                        setConfirmBackground(R.drawable.sweet_button_red_background)
 
                     mWarningFrame!!.visibility = View.VISIBLE
                 }
@@ -242,6 +241,7 @@ class SweetAlertDialog constructor(
                         setCustomView(builderInfo.customViewResource!!)
                     }
                 }
+                else -> {}
             }
             if (!fromCreate) {
                 playAnimation()
@@ -273,6 +273,12 @@ class SweetAlertDialog constructor(
         }
     }
 
+    fun setTitleText(@StringRes resId: Int): SweetAlertDialog {
+        return apply {
+            this.setTitleText(this.context.getString(resId))
+        }
+    }
+
     fun setCustomImage(drawable: Drawable?): SweetAlertDialog {
         return apply {
             builderInfo.customImgDrawable(drawable)
@@ -297,15 +303,15 @@ class SweetAlertDialog constructor(
     fun setCustomView(@LayoutRes resId: Int): SweetAlertDialog {
         return apply {
             builderInfo.customView(resId)
-            mCustomView?.let {
-                setCustomView(context.inflate(resId, it))
+            mCustomViewContainer?.let { container ->
+                setCustomView(context.inflate(resId, container))
             }
         }
     }
     fun setCustomView(view: View): SweetAlertDialog {
         return apply {
             builderInfo.customView(view)
-            mCustomView?.let { container ->
+            mCustomViewContainer?.let { container ->
                 container.visible = true
                 container.addView(view)
             }
@@ -404,7 +410,7 @@ class SweetAlertDialog constructor(
     }
 
     override fun onStart() {
-        mDialogView!!.startAnimation(mModalInAnim)
+        rootView!!.startAnimation(mModalInAnim)
         playAnimation()
     }
 
@@ -425,7 +431,7 @@ class SweetAlertDialog constructor(
     private fun dismissWithAnimation(fromCancel: Boolean) {
         mCloseFromCancel = fromCancel
         mConfirmAction?.buttonView?.startAnimation(mOverlayOutAnim)
-        mDialogView!!.startAnimation(mModalOutAnim)
+        rootView!!.startAnimation(mModalOutAnim)
     }
 
     init {
@@ -457,7 +463,7 @@ class SweetAlertDialog constructor(
         mModalOutAnim.setAnimationListener(object : AnimationListener {
             override fun onAnimationStart(animation: Animation) {}
             override fun onAnimationEnd(animation: Animation) {
-                mDialogView?.let {
+                rootView?.let {
                    it. visibility = View.GONE
                     it.post {
                         if (mCloseFromCancel) {

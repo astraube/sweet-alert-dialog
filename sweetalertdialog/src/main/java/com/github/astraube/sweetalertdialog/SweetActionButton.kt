@@ -1,11 +1,11 @@
 package com.github.astraube.sweetalertdialog
 
 import android.view.View
-import android.widget.Button
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.appcompat.widget.AppCompatButton
 import com.github.astraube.sweetalertdialog.extensions.isNotNullOrBlank
 import com.github.astraube.sweetalertdialog.extensions.visible
 
@@ -30,7 +30,7 @@ data class SweetActionButton constructor(
         this.backgroundResource = backgroundResId
     }
 
-    internal val buttonView: Button = dialog.findViewById<View>(viewId) as Button
+    internal val buttonView: AppCompatButton = dialog.findViewById<View>(viewId) as AppCompatButton
 
     internal var text: String? = null
         set(value) {

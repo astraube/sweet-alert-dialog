@@ -3,4 +3,9 @@
     <dimen name="alert_width">310dp</dimen>
     <dimen name="common_circle_width">3dp</dimen>
     <dimen name="progress_circle_radius">34dp</dimen>
+
+    <dimen name="corner_radius_xs">4dp</dimen>
+    <dimen name="corner_radius_sm">6dp</dimen>
+    <dimen name="corner_radius_m">8dp</dimen>
+    <dimen name="corner_radius_xm">10dp</dimen>
 </resources>

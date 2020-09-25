@@ -357,8 +357,6 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
-color blue_btn_bg_color
-color blue_btn_bg_pressed_color
 color blue_progress_bar_color
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
@@ -366,6 +364,12 @@ color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
+color btn_bg_color_blue
+color btn_bg_color_gray
+color btn_bg_color_red
+color btn_bg_pressed_color_blue
+color btn_bg_pressed_color_gray
+color btn_bg_pressed_color_red
 color button_material_dark
 color button_material_light
 color button_text_color
@@ -379,8 +383,6 @@ color error_stroke_color
 color float_transparent
 color foreground_material_dark
 color foreground_material_light
-color gray_btn_bg_color
-color gray_btn_bg_pressed_color
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color material_blue_grey_80
@@ -410,8 +412,6 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
-color red_btn_bg_color
-color red_btn_bg_pressed_color
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -519,6 +519,10 @@ dimen compat_button_padding_vertical_material
 dimen compat_control_corner_material
 dimen compat_notification_large_icon_max_height
 dimen compat_notification_large_icon_max_width
+dimen corner_radius_m
+dimen corner_radius_sm
+dimen corner_radius_xm
+dimen corner_radius_xs
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
 dimen highlight_alpha_material_colored
@@ -646,6 +650,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable close
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -658,6 +663,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable sweet_button_bg_circle
 drawable sweet_button_blue_background
 drawable sweet_button_gray_background
 drawable sweet_button_red_background
@@ -732,6 +738,7 @@ id cancel_button
 id checkbox
 id checked
 id chronometer
+id close_button
 id confirm_button
 id content
 id contentPanel

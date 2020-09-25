@@ -9,13 +9,14 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:background="@drawable/sweet_dialog_background"
-    android:padding="10dp">
+    android:paddingHorizontal="10dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="15dp">
 
     <ImageView
         android:id="@+id/custom_image"
         android:layout_width="53dp"
         android:layout_height="53dp"
-        android:layout_marginTop="5dp"
         android:contentDescription="@string/app_name"
         android:visibility="gone"
         android:scaleType="fitCenter" />
@@ -24,7 +25,6 @@
         android:id="@+id/error_frame"
         android:layout_width="53dp"
         android:layout_height="53dp"
-        android:layout_marginTop="5dp"
         android:visibility="gone">
         <View
             android:layout_width="match_parent"
@@ -45,7 +45,6 @@
         android:id="@+id/success_frame"
         android:layout_width="53dp"
         android:layout_height="53dp"
-        android:layout_marginTop="5dp"
         android:visibility="gone">
 
         <View
@@ -77,7 +76,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/sweet_success_circle" />
 
-        <com.github.astraube.SuccessTickView
+        <com.github.astraube.sweetalertdialog.SuccessTickView
             android:id="@+id/success_tick"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -88,7 +87,6 @@
         android:id="@+id/warning_frame"
         android:layout_width="53dp"
         android:layout_height="53dp"
-        android:layout_marginTop="5dp"
         android:visibility="gone">
 
         <View
@@ -108,12 +106,12 @@
         android:id="@+id/progress_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="4dp"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:visibility="gone">
 
-        <com.github.astraube.ProgressWheel
+        <com.github.astraube.sweetalertdialog.ProgressWheel
             android:id="@+id/progressWheel"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -126,21 +124,19 @@
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="19sp"
-        android:textColor="#575757"
-        android:singleLine="true"
+        android:layout_marginHorizontal="10dp"
+        android:textAppearance="@style/SweetAlert.Text.Title"
+        android:textAlignment="center"
         android:text="@string/dialog_default_title" />
 
     <TextView
         android:id="@+id/content_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="14sp"
+        android:layout_marginHorizontal="10dp"
+        android:textAppearance="@style/SweetAlert.Text.Content"
         android:textAlignment="center"
         android:gravity="center"
-        android:textColor="#797979"
         android:visibility="gone" />
 
     <FrameLayout
@@ -153,22 +149,22 @@
 
     <LinearLayout
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/cancel_button"
-            style="@style/dialog_blue_button"
-            android:background="@drawable/sweet_gray_button_background"
+            style="@style/SweetAlert.Button.Gray"
             android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
             android:visibility="gone"
             android:text="@string/dialog_cancel" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/confirm_button"
-            style="@style/dialog_blue_button"
+            style="@style/SweetAlert.Button.Blue"
             android:text="@string/dialog_ok" />
     </LinearLayout>
 

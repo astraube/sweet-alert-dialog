@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="blue_btn_bg_color">#AEDEF4</color>
-    <color name="blue_btn_bg_pressed_color">#96BFD2</color>
     <color name="blue_progress_bar_color">#5588FF</color>
+    <color name="btn_bg_color_blue">#AEDEF4</color>
+    <color name="btn_bg_color_gray">#D0D0D0</color>
+    <color name="btn_bg_color_red">#DD6B55</color>
+    <color name="btn_bg_pressed_color_blue">#96BFD2</color>
+    <color name="btn_bg_pressed_color_gray">#B6B6B6</color>
+    <color name="btn_bg_pressed_color_red">#CD5B55</color>
     <color name="button_text_color">#FFFFFF</color>
     <color name="error_stroke_color">#F27474</color>
     <color name="float_transparent">#00000000</color>
-    <color name="gray_btn_bg_color">#D0D0D0</color>
-    <color name="gray_btn_bg_pressed_color">#B6B6B6</color>
     <color name="material_blue_grey_80">#ff37474f</color>
     <color name="material_blue_grey_90">#ff263238</color>
     <color name="material_blue_grey_95">#ff21272b</color>
     <color name="material_deep_teal_20">#ff80cbc4</color>
     <color name="material_deep_teal_50">#ff009688</color>
-    <color name="red_btn_bg_color">#DD6B55</color>
-    <color name="red_btn_bg_pressed_color">#CD5B55</color>
     <color name="success_stroke_color">#A5DC86</color>
     <color name="sweet_dialog_bg_color">#FFFFFF</color>
     <color name="text_color_10">#575757</color>
@@ -23,6 +23,10 @@
     <color name="warning_stroke_color">#F8BB86</color>
     <dimen name="alert_width">310dp</dimen>
     <dimen name="common_circle_width">3dp</dimen>
+    <dimen name="corner_radius_m">8dp</dimen>
+    <dimen name="corner_radius_sm">6dp</dimen>
+    <dimen name="corner_radius_xm">10dp</dimen>
+    <dimen name="corner_radius_xs">4dp</dimen>
     <dimen name="progress_circle_radius">34dp</dimen>
     <item name="dialogContainer" type="id"/>
     <item name="error" type="id"/>
@@ -36,7 +40,8 @@
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_default_title">Message!</string>
     <string name="dialog_ok">OK</string>
-    <style name="SweetAlert.Button" parent="android:Widget.Button">
+    <style name="SweetAlert.Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/sweet_button_gray_background</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">38dp</item>
         <item name="android:textSize">14sp</item>
@@ -63,13 +68,13 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.4</item>
     </style>
-    <style name="SweetAlert.Text.Content" parent="android:Widget.TextView">
+    <style name="SweetAlert.Text.Content" parent="@style/TextAppearance.AppCompat">
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/text_color_20</item>
         <item name="android:textStyle">normal</item>
     </style>
-    <style name="SweetAlert.Text.Title" parent="android:Widget.TextView">
+    <style name="SweetAlert.Text.Title" parent="@style/TextAppearance.AppCompat">
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:textSize">19sp</item>
         <item name="android:textColor">@color/text_color_10</item>

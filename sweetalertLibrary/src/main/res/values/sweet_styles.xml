@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="alert_dialog" parent="android:Theme.Dialog">
+    <style name="SweetAlert.Dialog" parent="android:Theme.Dialog">
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowNoTitle">true</item>
@@ -11,13 +11,41 @@
         <item name="android:backgroundDimAmount">0.4</item>
     </style>
 
-    <style name="dialog_blue_button" parent="android:Widget.Button">
+    <style name="SweetAlert.Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/sweet_button_gray_background</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">31dp</item>
-        <item name="android:background">@drawable/sweet_blue_button_background</item>
+        <item name="android:layout_height">38dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:paddingLeft">21dp</item>
         <item name="android:paddingRight">21dp</item>
         <item name="android:textColor">@color/button_text_color</item>
     </style>
+
+    <style name="SweetAlert.Button.Blue" parent="SweetAlert.Button">
+        <item name="android:background">@drawable/sweet_button_blue_background</item>
+    </style>
+
+    <style name="SweetAlert.Button.Gray" parent="SweetAlert.Button">
+        <item name="android:background">@drawable/sweet_button_gray_background</item>
+    </style>
+
+    <style name="SweetAlert.Button.Red" parent="SweetAlert.Button">
+        <item name="android:background">@drawable/sweet_button_red_background</item>
+    </style>
+
+    <style name="SweetAlert.Text.Title" parent="@style/TextAppearance.AppCompat">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/text_color_10</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="SweetAlert.Text.Content" parent="@style/TextAppearance.AppCompat">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_color_20</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>

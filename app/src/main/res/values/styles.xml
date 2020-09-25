@@ -86,9 +86,9 @@
 
     <!--
         SweetAlert Styles - Overriding SweetAlert component styles
-    -->
+    --><!--
     <style name="SweetAlert.Button.Blue" parent="SweetAlert.Button">
         <item name="android:background">@drawable/sample_sweet_button_background</item>
-    </style>
+    </style>-->
 
 </resources>

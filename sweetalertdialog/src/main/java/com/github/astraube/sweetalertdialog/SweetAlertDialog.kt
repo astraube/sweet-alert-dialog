@@ -14,6 +14,7 @@ import android.view.animation.Animation.AnimationListener
 import android.view.animation.AnimationSet
 import android.view.animation.Transformation
 import android.widget.FrameLayout
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorRes
@@ -21,12 +22,13 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.github.astraube.sweetalertdialog.OptAnimationLoader.loadAnimation
-import com.github.astraube.sweetalertdialog.extensions.isNotNullOrBlank
-import com.github.astraube.sweetalertdialog.extensions.visible
-import com.github.astraube.sweetalertdialog.extensions.setBgRes
 import com.github.astraube.sweetalertdialog.SweetAlertType.*
 import com.github.astraube.sweetalertdialog.extensions.inflate
+import com.github.astraube.sweetalertdialog.extensions.isNotNullOrBlank
+import com.github.astraube.sweetalertdialog.extensions.setBgRes
+import com.github.astraube.sweetalertdialog.extensions.visible
 
 class SweetAlertDialog constructor(
     context: Context,
@@ -63,6 +65,7 @@ class SweetAlertDialog constructor(
     private var mErrorX: ImageView? = null
     private var mSuccessLeftMask: View? = null
     private var mSuccessRightMask: View? = null
+    private var mCloseButton: ImageButton? = null
     private var mCustomImage: ImageView? = null
     private var mCustomViewContainer: FrameLayout? = null
     private var mWarningFrame: FrameLayout? = null
@@ -87,6 +90,9 @@ class SweetAlertDialog constructor(
             private set
         @LayoutRes
         var customViewResource: Int? = null
+            private set
+
+        var isShowCloseButton: Boolean = true
             private set
 
         var confirmText: String? = null
@@ -125,6 +131,8 @@ class SweetAlertDialog constructor(
             if (text.isNotNullOrBlank())
                 this.isShowConfirm =true
         }
+        fun isShowCloseButton(visibility: Boolean) = apply { this.isShowCloseButton = visibility }
+
         fun confirmText(@StringRes resId: Int) = apply { this.confirmText(context.getString(resId)) }
         fun confirmBackground(@ColorRes @DrawableRes resId: Int? = null) = apply { this.confirmBgResource = resId }
         fun confirmListener(listener: OnSweetListener?) = apply { this.confirmListener = listener }
@@ -163,10 +171,15 @@ class SweetAlertDialog constructor(
         mSuccessTick = mSuccessFrame!!.findViewById<View>(R.id.success_tick) as SuccessTickView
         mSuccessLeftMask = mSuccessFrame!!.findViewById(R.id.mask_left)
         mSuccessRightMask = mSuccessFrame!!.findViewById(R.id.mask_right)
+        mCloseButton = findViewById<View>(R.id.close_button) as ImageButton
         mCustomImage = findViewById<View>(R.id.custom_image) as ImageView
         mCustomViewContainer = findViewById<View>(R.id.custom_view) as FrameLayout
         mWarningFrame = findViewById<View>(R.id.warning_frame) as FrameLayout
         progressHelper.progressWheel = findViewById<View>(R.id.progressWheel) as ProgressWheel
+
+        mCloseButton?.setOnClickListener {
+            this.dismiss()
+        }
 
         mConfirmAction = SweetActionButton(this, R.id.confirm_button, builderInfo.confirmListener, builderInfo.confirmText, builderInfo.confirmBgResource).also {
             it.isVisible(builderInfo.isShowConfirm)
@@ -186,6 +199,7 @@ class SweetAlertDialog constructor(
         mSuccessFrame!!.visibility = View.GONE
         mWarningFrame!!.visibility = View.GONE
         mProgressFrame!!.visibility = View.GONE
+        mCustomViewContainer!!.visibility = View.GONE
         mConfirmAction?.isVisible(true)
         mConfirmAction?.backgroundResource = R.drawable.sweet_button_blue_background
         mErrorFrame!!.clearAnimation()
@@ -258,6 +272,21 @@ class SweetAlertDialog constructor(
             mDialogBg = backgroundResId
             mDialogContainer?.let {
                 it.setBgRes(backgroundResId)
+            }
+        }
+    }
+
+    override fun setCancelable(flag: Boolean) {
+        super.setCancelable(flag)
+
+        showCloseButton(flag)
+    }
+
+    fun showCloseButton(isShow: Boolean): SweetAlertDialog {
+        return apply {
+            builderInfo.isShowCloseButton(isShow)
+            this.mCloseButton?.let{
+                it.visibility = if (isShow) View.VISIBLE else View.GONE
             }
         }
     }
@@ -430,6 +459,7 @@ class SweetAlertDialog constructor(
 
     init {
         setCancelable(true)
+        showCloseButton(true)
         setCanceledOnTouchOutside(false)
         progressHelper = ProgressHelper(context)
         mErrorInAnim = loadAnimation(getContext(), R.anim.sweet_error_frame_in)

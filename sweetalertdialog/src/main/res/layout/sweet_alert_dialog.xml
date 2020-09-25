@@ -9,10 +9,19 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:background="@drawable/sweet_dialog_background"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    android:paddingHorizontal="10dp"
     android:paddingBottom="10dp"
     android:paddingTop="15dp">
+
+    <ImageButton
+        android:id="@+id/close_button"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:visibility="visible"
+        android:background="@drawable/sweet_button_bg_circle"
+        android:src="@drawable/close"
+        android:tint="#FFFFFF"
+        android:layout_gravity="right" />
 
     <ImageView
         android:id="@+id/custom_image"
@@ -125,13 +134,16 @@
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
         android:textAppearance="@style/SweetAlert.Text.Title"
+        android:textAlignment="center"
         android:text="@string/dialog_default_title" />
 
     <TextView
         android:id="@+id/content_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
         android:textAppearance="@style/SweetAlert.Text.Content"
         android:textAlignment="center"
         android:gravity="center"
@@ -152,16 +164,15 @@
         android:layout_height="wrap_content"
         android:gravity="center">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/cancel_button"
-            style="@style/SweetAlert.Button.Blue"
-            android:background="@drawable/sweet_button_gray_background"
+            style="@style/SweetAlert.Button.Gray"
             android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
             android:visibility="gone"
             android:text="@string/dialog_cancel" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/confirm_button"
             style="@style/SweetAlert.Button.Blue"
             android:text="@string/dialog_ok" />
