@@ -1,4 +1,4 @@
-package com.github.astraube
+package com.github.astraube.sweetalertdialog
 
 import android.content.Context
 import android.graphics.Camera
@@ -35,13 +35,13 @@ class Rotate3dAnimation : Animation {
         attrs: AttributeSet?
     ) : super(context, attrs) {
         val a = context.obtainStyledAttributes(attrs, R.styleable.Rotate3dAnimation)
-        mFromDegrees = a.getFloat(R.styleable.Rotate3dAnimation_fromDeg, 0.0f)
-        mToDegrees = a.getFloat(R.styleable.Rotate3dAnimation_toDeg, 0.0f)
-        mRollType = a.getInt(R.styleable.Rotate3dAnimation_rollType, ROLL_BY_X)
-        var d = parseValue(a.peekValue(R.styleable.Rotate3dAnimation_pivotX))
+        mFromDegrees = a.getFloat(R.styleable.Rotate3dAnimation_rotateFromDeg, 0.0f)
+        mToDegrees = a.getFloat(R.styleable.Rotate3dAnimation_rotateToDeg, 0.0f)
+        mRollType = a.getInt(R.styleable.Rotate3dAnimation_rotateRollType, ROLL_BY_X)
+        var d = parseValue(a.peekValue(R.styleable.Rotate3dAnimation_rotatePivotX))
         mPivotXType = d.type
         mPivotXValue = d.value
-        d = parseValue(a.peekValue(R.styleable.Rotate3dAnimation_pivotY))
+        d = parseValue(a.peekValue(R.styleable.Rotate3dAnimation_rotatePivotY))
         mPivotYType = d.type
         mPivotYValue = d.value
         a.recycle()

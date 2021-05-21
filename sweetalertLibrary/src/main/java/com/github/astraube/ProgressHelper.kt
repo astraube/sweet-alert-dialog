@@ -1,7 +1,7 @@
-package com.github.astraube
+package com.github.astraube.sweetalertdialog
 
 import android.content.Context
-import com.github.astraube.extensions.color
+import com.github.astraube.sweetalertdialog.extensions.color
 
 class ProgressHelper(ctx: Context) {
     private var mProgressWheel: ProgressWheel? = null

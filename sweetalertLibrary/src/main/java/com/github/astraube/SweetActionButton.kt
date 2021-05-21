@@ -1,11 +1,11 @@
 package com.github.astraube.sweetalertdialog
 
 import android.view.View
-import androidx.appcompat.widget.AppCompatButton
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
+import androidx.appcompat.widget.AppCompatButton
 import com.github.astraube.sweetalertdialog.extensions.isNotNullOrBlank
 import com.github.astraube.sweetalertdialog.extensions.visible
 

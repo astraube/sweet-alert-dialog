@@ -1,4 +1,4 @@
-package com.github.astraube
+package com.github.astraube.sweetalertdialog
 
 import android.content.Context
 import android.content.res.Resources.NotFoundException
@@ -65,7 +65,7 @@ object OptAnimationLoader {
 
     @Throws(XmlPullParserException::class, IOException::class)
     private fun getAnimation(context: Context, parser: XmlPullParser, attrs: AttributeSet): Animation? {
-        var anim: Animation? = null
+        val anim: Animation?
         when (val name = parser.name) {
             "set" -> {
                 anim = AnimationSet(context, attrs)

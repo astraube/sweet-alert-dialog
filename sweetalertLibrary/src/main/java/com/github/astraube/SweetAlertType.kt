@@ -1,4 +1,4 @@
-package com.github.astraube
+package com.github.astraube.sweetalertdialog
 
 /**
  * @author Andre Straube

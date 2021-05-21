@@ -1,4 +1,4 @@
-package com.github.astraube
+package com.github.astraube.sweetalertdialog
 
 import android.annotation.TargetApi
 import android.content.Context
@@ -13,7 +13,7 @@ import android.os.SystemClock
 import android.provider.Settings
 import android.util.AttributeSet
 import android.view.View
-import com.github.astraube.extensions.toDp
+import com.github.astraube.sweetalertdialog.extensions.toDp
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
@@ -107,9 +107,9 @@ class ProgressWheel : View {
                 Settings.Global.ANIMATOR_DURATION_SCALE, 1f
             )
         } else {
-            Settings.System.getFloat(
+            Settings.Global.getFloat(
                 context.contentResolver,
-                Settings.System.ANIMATOR_DURATION_SCALE, 1f
+                Settings.Global.ANIMATOR_DURATION_SCALE, 1f
             )
         }
         shouldAnimate = animationValue != 0f
@@ -126,28 +126,30 @@ class ProgressWheel : View {
         val widthSize = MeasureSpec.getSize(widthMeasureSpec)
         val heightMode = MeasureSpec.getMode(heightMeasureSpec)
         val heightSize = MeasureSpec.getSize(heightMeasureSpec)
-        val width: Int
-        val height: Int
 
-        //Measure Width
-        width = if (widthMode == MeasureSpec.EXACTLY) {
-            //Must be this size
-            widthSize
-        } else if (widthMode == MeasureSpec.AT_MOST) {
-            //Can't be bigger than...
-            Math.min(viewWidth, widthSize)
-        } else {
-            //Be whatever you want
-            viewWidth
+        // Measure Width
+        val width: Int = when (widthMode) {
+            MeasureSpec.EXACTLY -> {
+                //Must be this size
+                widthSize
+            }
+            MeasureSpec.AT_MOST -> {
+                //Can't be bigger than...
+                viewWidth.coerceAtMost(widthSize)
+            }
+            else -> {
+                //Be whatever you want
+                viewWidth
+            }
         }
 
-        //Measure Height
-        height = if (heightMode == MeasureSpec.EXACTLY || widthMode == MeasureSpec.EXACTLY) {
+        // Measure Height
+        val height: Int = if (heightMode == MeasureSpec.EXACTLY || widthMode == MeasureSpec.EXACTLY) {
             //Must be this size
             heightSize
         } else if (heightMode == MeasureSpec.AT_MOST) {
             //Can't be bigger than...
-            Math.min(viewHeight, heightSize)
+            viewHeight.coerceAtMost(heightSize)
         } else {
             //Be whatever you want
             viewHeight
@@ -192,11 +194,9 @@ class ProgressWheel : View {
         val paddingRight = paddingRight
         circleBounds = if (!fillRadius) {
             // Width should equal to Height, find the min value to setup the circle
-            val minValue = Math.min(
-                layout_width - paddingLeft - paddingRight,
-                layout_height - paddingBottom - paddingTop
-            )
-            val circleDiameter = Math.min(minValue, circleRadius * 2 - barWidth * 2)
+            val minValue =
+                (layout_width - paddingLeft - paddingRight).coerceAtMost(layout_height - paddingBottom - paddingTop)
+            val circleDiameter = minValue.coerceAtMost(circleRadius * 2 - barWidth * 2)
 
             // Calc the Offset if needed for centering the wheel in the available space
             val xOffset =
@@ -384,9 +384,9 @@ class ProgressWheel : View {
         invalidate()
     }
 
-    private fun runCallback(value: Float) {
+    private fun runCallback(progress: Float) {
         if (callback != null) {
-            callback!!.onProgressUpdate(value)
+            callback!!.onProgressUpdate(progress)
         }
     }
 
@@ -426,7 +426,7 @@ class ProgressWheel : View {
     }
 
     // Great way to save a view's state http://stackoverflow.com/a/7089687/1991053
-    public override fun onSaveInstanceState(): Parcelable? {
+    public override fun onSaveInstanceState(): Parcelable {
         val superState = super.onSaveInstanceState()
         val ss = WheelSavedState(superState)
 
@@ -450,19 +450,18 @@ class ProgressWheel : View {
             super.onRestoreInstanceState(state)
             return
         }
-        val ss = state
-        super.onRestoreInstanceState(ss.superState)
-        mProgress = ss.mProgress
-        mTargetProgress = ss.mTargetProgress
-        isSpinning = ss.isSpinning
-        spinSpeed = ss.spinSpeed
-        barWidth = ss.barWidth
-        barColor = ss.barColor
-        rimWidth = ss.rimWidth
-        rimColor = ss.rimColor
-        circleRadius = ss.circleRadius
-        linearProgress = ss.linearProgress
-        fillRadius = ss.fillRadius
+        super.onRestoreInstanceState(state.superState)
+        mProgress = state.mProgress
+        mTargetProgress = state.mTargetProgress
+        isSpinning = state.isSpinning
+        spinSpeed = state.spinSpeed
+        barWidth = state.barWidth
+        barColor = state.barColor
+        rimWidth = state.rimWidth
+        rimColor = state.rimColor
+        circleRadius = state.circleRadius
+        linearProgress = state.linearProgress
+        fillRadius = state.fillRadius
         lastTimeAnimated = SystemClock.uptimeMillis()
     }
 
@@ -697,7 +696,7 @@ class ProgressWheel : View {
 
         companion object {
             //required field that makes Parcelables from a Parcel
-            val CREATOR: Parcelable.Creator<WheelSavedState> =
+            @JvmField val CREATOR: Parcelable.Creator<WheelSavedState> =
                 object : Parcelable.Creator<WheelSavedState> {
                     override fun createFromParcel(value: Parcel): WheelSavedState? {
                         return WheelSavedState(value)

@@ -13,11 +13,21 @@
     android:paddingBottom="10dp"
     android:paddingTop="15dp">
 
+    <ImageButton
+        android:id="@+id/close_button"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:visibility="visible"
+        android:background="@drawable/sweet_button_bg_circle"
+        android:src="@drawable/close"
+        android:tint="#FFFFFF"
+        android:layout_gravity="right" />
+
     <ImageView
         android:id="@+id/custom_image"
         android:layout_width="53dp"
         android:layout_height="53dp"
-        android:contentDescription="@string/app_name"
+        android:contentDescription="@string/sweet_app_name"
         android:visibility="gone"
         android:scaleType="fitCenter" />
 
@@ -35,7 +45,7 @@
             android:id="@+id/error_x"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/sweet_app_name"
             android:src="@drawable/sweet_error_center_x"
             android:scaleType="center" />
 
@@ -97,7 +107,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/sweet_app_name"
             android:src="@drawable/sweet_warning_sigh"
             android:scaleType="center" />
     </FrameLayout>
@@ -144,7 +154,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:contentDescription="@string/app_name"
+        android:contentDescription="@string/sweet_app_name"
         android:visibility="gone" />
 
     <LinearLayout
