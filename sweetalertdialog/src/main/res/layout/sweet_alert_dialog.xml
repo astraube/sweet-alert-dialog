@@ -14,17 +14,18 @@
     android:paddingTop="15dp">
 
     <ImageButton
-        android:id="@+id/close_button"
+        android:id="@+id/closeButton"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:visibility="visible"
         android:background="@drawable/sweet_button_bg_circle"
         android:src="@drawable/close"
         android:tint="#FFFFFF"
-        android:layout_gravity="right" />
+        android:layout_gravity="right"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <ImageView
-        android:id="@+id/custom_image"
+        android:id="@+id/customImage"
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:contentDescription="@string/app_name"
@@ -32,7 +33,7 @@
         android:scaleType="fitCenter" />
 
     <FrameLayout
-        android:id="@+id/error_frame"
+        android:id="@+id/errorFrame"
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:visibility="gone">
@@ -42,7 +43,7 @@
             android:background="@drawable/sweet_error_circle" />
 
         <ImageView
-            android:id="@+id/error_x"
+            android:id="@+id/errorImg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/app_name"
@@ -52,7 +53,7 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/success_frame"
+        android:id="@+id/successFrame"
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:visibility="gone">
@@ -63,7 +64,7 @@
             android:background="@drawable/sweet_success_bow" />
 
         <View
-            android:id="@+id/mask_right"
+            android:id="@+id/maskRight"
             android:layout_width="35dp"
             android:layout_height="80dp"
             android:layout_marginTop="-13dp"
@@ -72,7 +73,7 @@
             tools:ignore="RtlHardcoded" />
 
         <View
-            android:id="@+id/mask_left"
+            android:id="@+id/maskLeft"
             android:layout_width="21dp"
             android:layout_height="60dp"
             android:layout_marginLeft="-3dp"
@@ -87,14 +88,14 @@
             android:background="@drawable/sweet_success_circle" />
 
         <com.github.astraube.sweetalertdialog.SuccessTickView
-            android:id="@+id/success_tick"
+            android:id="@+id/successTick"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/warning_frame"
+        android:id="@+id/warningFrame"
         android:layout_width="53dp"
         android:layout_height="53dp"
         android:visibility="gone">
@@ -113,7 +114,7 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/progress_dialog"
+        android:id="@+id/progressDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -128,29 +129,30 @@
             android:layout_gravity="center"
             wheel:progressBarColor="@color/success_stroke_color"
             wheel:progressProgressIndeterminate="true" />
+
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/title_text"
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/SweetAlert.Text.Title"
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:textAppearance="@style/SweetAlert.Text.Title"
         android:textAlignment="center"
         android:text="@string/dialog_default_title" />
 
-    <TextView
-        android:id="@+id/content_text"
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/SweetAlert.Text.Content"
+        android:id="@+id/tvContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:textAppearance="@style/SweetAlert.Text.Content"
         android:textAlignment="center"
         android:gravity="center"
         android:visibility="gone" />
 
     <FrameLayout
-        android:id="@+id/custom_view"
+        android:id="@+id/customView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -165,16 +167,16 @@
         android:gravity="center">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/cancel_button"
             style="@style/SweetAlert.Button.Gray"
+            android:id="@+id/btnCancel"
             android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
             android:visibility="gone"
             android:text="@string/dialog_cancel" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/confirm_button"
             style="@style/SweetAlert.Button.Blue"
+            android:id="@+id/btnConfirm"
             android:text="@string/dialog_ok" />
     </LinearLayout>
 

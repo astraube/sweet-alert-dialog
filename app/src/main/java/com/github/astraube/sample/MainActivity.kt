@@ -80,6 +80,41 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 pDialog.setCancelable(true)
                 pDialog.show()
             }
+            R.id.progress_dialog -> {
+                val pDialog = SweetAlertDialog(this, SweetAlertType.PROGRESS_TYPE)
+                pDialog.setTitleText("Loading")
+                pDialog.setCancelableAndCloseButton(isCancelable = true, isShowCloseButton = false)
+                pDialog.show()
+
+                object : CountDownTimer(800 * 7, 800) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        // you can change the progress bar color by ProgressHelper every 800 millis
+                        i++
+                        when (i) {
+                            0 -> pDialog.progressHelper.barColor =
+                                color(R.color.btn_bg_color_blue)
+                            1 -> pDialog.progressHelper.barColor =
+                                color(R.color.material_deep_teal_50)
+                            2 -> pDialog.progressHelper.barColor =
+                                color(R.color.success_stroke_color)
+                            3 -> pDialog.progressHelper.barColor =
+                                color(R.color.material_deep_teal_20)
+                            4 -> pDialog.progressHelper.barColor =
+                                color(R.color.material_blue_grey_80)
+                            5 -> pDialog.progressHelper.barColor =
+                                color(R.color.warning_stroke_color)
+                            6 -> pDialog.progressHelper.barColor =
+                                color(R.color.success_stroke_color)
+                        }
+                    }
+                    override fun onFinish() {
+                        i = -1
+                        pDialog.setTitleText("Success!")
+                            .setConfirmText("OK")
+                            .changeAlertType(SweetAlertType.SUCCESS_TYPE)
+                    }
+                }.start()
+            }
             R.id.custom_view -> {
                 val sad = SweetAlertDialog.Builder(this, SweetAlertType.CUSTOM_VIEW_TYPE)
                     .title("Custom View Dialog")
@@ -169,7 +204,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         dialog.setTitleText("Deleted!")
                             .setContentText("Your imaginary file has been deleted!")
                             .setConfirmText("OK")
-                            .showCloseButton(true)
+                            .setCloseButton(true)
                             .showCancelButton(false)
                             .setCancelClickListener(null)
                             .setConfirmClickListener(null)
@@ -182,42 +217,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 .setContentText("Here's a custom image.")
                 .setCustomImage(R.drawable.custom_img)
                 .show()
-            R.id.progress_dialog -> {
-                val pDialog = SweetAlertDialog(this, SweetAlertType.PROGRESS_TYPE)
-                pDialog.setTitleText("Loading")
-                pDialog.showCloseButton(true)
-                pDialog.show()
-                pDialog.setCancelable(false)
-
-                object : CountDownTimer(800 * 7, 800) {
-                    override fun onTick(millisUntilFinished: Long) {
-                        // you can change the progress bar color by ProgressHelper every 800 millis
-                        i++
-                        when (i) {
-                            0 -> pDialog.progressHelper.barColor =
-                                color(R.color.btn_bg_color_blue)
-                            1 -> pDialog.progressHelper.barColor =
-                                color(R.color.material_deep_teal_50)
-                            2 -> pDialog.progressHelper.barColor =
-                                color(R.color.success_stroke_color)
-                            3 -> pDialog.progressHelper.barColor =
-                                color(R.color.material_deep_teal_20)
-                            4 -> pDialog.progressHelper.barColor =
-                                color(R.color.material_blue_grey_80)
-                            5 -> pDialog.progressHelper.barColor =
-                                color(R.color.warning_stroke_color)
-                            6 -> pDialog.progressHelper.barColor =
-                                color(R.color.success_stroke_color)
-                        }
-                    }
-                    override fun onFinish() {
-                        i = -1
-                        pDialog.setTitleText("Success!")
-                            .setConfirmText("OK")
-                            .changeAlertType(SweetAlertType.SUCCESS_TYPE)
-                    }
-                }.start()
-            }
         }
     }
 }

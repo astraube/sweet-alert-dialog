@@ -1,10 +1,11 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-parcelize'
 }
 
-version = VERSION_CODE
-group = GROUP
+//version = VERSION_CODE
+//group = GROUP
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -32,24 +33,18 @@ android {
     }
     buildFeatures {
         viewBinding true
+//        dataBinding true
     }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    // if using in project jdk8
+    //noinspection GradleDependency
+    // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
     implementation "androidx.core:core-ktx:$kotlinCoreVersion"
     implementation "androidx.appcompat:appcompat:$androidxAppcompatVersion"
-}
-
-
-
-apply plugin: 'maven'
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: uri('repo'))
-        }
-    }
 }

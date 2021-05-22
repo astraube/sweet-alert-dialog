@@ -6,8 +6,8 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatButton
-import com.github.astraube.sweetalertdialog.extensions.isNotNullOrBlank
-import com.github.astraube.sweetalertdialog.extensions.visible
+import com.github.astraube.sweetalertdialog.internal.extensions.isNotNullOrBlank
+import com.github.astraube.sweetalertdialog.internal.extensions.visible
 
 /**
  * @author Andre Straube

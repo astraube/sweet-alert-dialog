@@ -10,7 +10,6 @@
     <style name="AppTheme" parent="Theme.Base.NoActionBar">
         <item name="checkboxStyle">@style/Widget.App.CheckBox</item>
         <item name="switchStyle">@style/Widget.App.Switch</item>
-
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorPrimaryVariant">#000000</item>

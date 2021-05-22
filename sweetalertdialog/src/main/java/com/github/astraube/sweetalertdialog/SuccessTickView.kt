@@ -2,14 +2,13 @@ package com.github.astraube.sweetalertdialog
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.Transformation
-import com.github.astraube.sweetalertdialog.extensions.color
+import com.github.astraube.sweetalertdialog.internal.extensions.color
 
 class SuccessTickView : View {
     private var mDensity = -1f

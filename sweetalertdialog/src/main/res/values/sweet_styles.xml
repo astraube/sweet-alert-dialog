@@ -5,6 +5,7 @@
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@color/float_transparent</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
@@ -33,15 +34,15 @@
         <item name="android:background">@drawable/sweet_button_red_background</item>
     </style>
 
-    <style name="SweetAlert.Text.Title" parent="@style/TextAppearance.AppCompat">
+    <style name="SweetAlert.Text.Title" parent="@style/Widget.AppCompat.TextView">
         <item name="android:layout_marginTop">10dp</item>
-        <item name="android:textSize">19sp</item>
-        <item name="android:textColor">@color/text_color_10</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/text_color_10</item>
     </style>
 
-    <style name="SweetAlert.Text.Content" parent="@style/TextAppearance.AppCompat">
+    <style name="SweetAlert.Text.Content" parent="@style/Widget.AppCompat.TextView">
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/text_color_20</item>
