@@ -1,3 +1,18 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sweet Alert Dialog</string>
+
+    <string name="btn_show_me" tools:ignore="ExtraTranslation" translatable="false">Show me!</string>
+
+    <string name="show_dialog_binding_test_1" tools:ignore="ExtraTranslation" translatable="false">Progress binding 1</string>
+    <string name="show_dialog_binding_test_2" tools:ignore="ExtraTranslation" translatable="false">Progress binding 2</string>
+    <string name="show_dialog_progress" tools:ignore="ExtraTranslation" translatable="false">Show material progress</string>
+    <string name="show_dialog_basic" tools:ignore="ExtraTranslation" translatable="false">A basic message</string>
+    <string name="show_dialog_custom_view" tools:ignore="ExtraTranslation" translatable="false">Custom View</string>
+    <string name="show_dialog_title_text" tools:ignore="ExtraTranslation" translatable="false">A title with a text under</string>
+    <string name="show_dialog_error_message" tools:ignore="ExtraTranslation" translatable="false">A error message</string>
+    <string name="show_dialog_success_message" tools:ignore="ExtraTranslation" translatable="false">A success message</string>
+    <string name="show_dialog_warning_message" tools:ignore="ExtraTranslation" translatable="false">A warning message, with a listener bind to the Confirm-button...</string>
+    <string name="show_dialog_warning_cancel_message" tools:ignore="ExtraTranslation" translatable="false">A warning message, with listeners bind to Cancel and Confirm button...</string>
+    <string name="show_dialog_message_icon" tools:ignore="ExtraTranslation" translatable="false">A message with a custom icon</string>
 </resources>

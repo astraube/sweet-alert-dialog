@@ -1,8 +1,9 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
 
-version = VERSION_NAME
+version = VERSION_CODE
 group = GROUP
 
 android {
@@ -29,13 +30,16 @@ android {
             versionNameSuffix '.debugStaging'
         }
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation "androidx.core:core-ktx:$kotlinCoreVersion"
+    implementation "androidx.appcompat:appcompat:$androidxAppcompatVersion"
 }
 
 
@@ -49,7 +53,3 @@ uploadArchives {
         }
     }
 }
-
-//apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
-
-apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'

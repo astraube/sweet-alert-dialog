@@ -1,14 +1,83 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
 .DS_Store
-/build
-/captures
+
+# Built application files
+*.apk
+*.aar
+*.ap_
+*.aab
+*.zip
+*.dex
+*.class
+*.log
+*.iml
+*.hprof
+*debug.log
+
+# Generated files
+bin/
+gen/
+out/
+tmp/
+build/
+app/build/
+app/schemas/
+app/src/debug/
+!**/src/**/build
+!**/test/**/build
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+.firebaserc
+.project
+.settings
+.classpath
 .externalNativeBuild
-.cxx
+.cxx/
+.navigation/
+proguard/
+captures/
+
+/.gradle/
+.gradle/
+.gradle/*
+.gradle/**/
+
+# JetBrains IDE
+!**/testData/**/*.iml
+.idea/libraries
+.idea/caches
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/modules.xml
+# Comente a próxima linha se manter a posição dos elementos no Editor de Navegação for relevante
+.idea/navEditor.xml
+
+# Freeline
+freeline.py
+freeline/
+freeline_project_description.json
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+
+# Version control
+vcs.xml
+
+# lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+# lint/reports/
+
+kotlin-ultimate/
+.rpt2_cache/
+libraries/tools/kotlin-test-js-runner/lib/
+libraries/tools/kotlin-source-map-loader/lib/

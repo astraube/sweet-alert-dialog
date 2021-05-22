@@ -19,4 +19,7 @@
     <dimen name="spacing_large">16dp</dimen>
     <dimen name="spacing_smlarge">18dp</dimen>
     <dimen name="spacing_mlarge">20dp</dimen>
+
+
+    <dimen name="corner_radius_xs">4dp</dimen>
 </resources>

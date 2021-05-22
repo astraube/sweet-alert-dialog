@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="?attr/colorOnBackground">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -23,8 +25,38 @@
             android:contentDescription="@string/app_name"/>
 
         <TextView
+            android:id="@+id/txt_binding_1"
+            android:text="@string/show_dialog_binding_test_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="14sp"
+            android:textColor="#797979" />
+        <Button
+            android:layout_centerHorizontal="true"
+            android:id="@+id/progress_binding_1"
+            style="@style/SweetAlert.Button.Blue"
+            android:layout_margin="10dp"
+            android:text="@string/btn_show_me"/>
+
+        <TextView
+            android:id="@+id/txt_binding_2"
+            android:text="@string/show_dialog_binding_test_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="14sp"
+            android:textColor="#797979" />
+        <Button
+            android:layout_centerHorizontal="true"
+            android:id="@+id/progress_binding_2"
+            style="@style/SweetAlert.Button.Blue"
+            android:layout_margin="10dp"
+            android:text="@string/btn_show_me"/>
+
+        <TextView
             android:id="@+id/txt_0"
-            android:text="show material progress"
+            android:text="@string/show_dialog_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -35,11 +67,11 @@
             android:id="@+id/progress_dialog"
             style="@style/SweetAlert.Button.Blue"
             android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:text="@string/btn_show_me"/>
 
         <TextView
             android:id="@+id/txt_1"
-            android:text="A basic message"
+            android:text="@string/show_dialog_basic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -50,10 +82,10 @@
             android:id="@+id/basic_test"
             style="@style/SweetAlert.Button.Blue"
             android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:text="@string/btn_show_me"/>
 
         <TextView
-            android:text="Custom View"
+            android:text="@string/show_dialog_custom_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -64,11 +96,11 @@
             android:id="@+id/custom_view"
             style="@style/SweetAlert.Button.Blue"
             android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:text="@string/btn_show_me"/>
 
         <TextView
             android:id="@+id/txt_2"
-            android:text="A title with a text under"
+            android:text="@string/show_dialog_title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -80,11 +112,11 @@
             android:id="@+id/under_text_test"
             style="@style/SweetAlert.Button.Blue"
             android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:text="@string/btn_show_me"/>
 
         <TextView
             android:id="@+id/txt_3"
-            android:text="show error message"
+            android:text="@string/show_dialog_error_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -96,11 +128,11 @@
             android:id="@+id/error_text_test"
             style="@style/SweetAlert.Button.Blue"
             android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:text="@string/btn_show_me"/>
 
         <TextView
             android:id="@+id/txt_4"
-            android:text="A success message"
+            android:text="@string/show_dialog_success_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -112,12 +144,12 @@
             android:id="@+id/success_text_test"
             style="@style/SweetAlert.Button.Blue"
             android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:text="@string/btn_show_me"/>
 
 
         <TextView
             android:id="@+id/txt_5"
-            android:text="A warning message, with a listener bind to the Confirm-button..."
+            android:text="@string/show_dialog_warning_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -129,11 +161,11 @@
             android:id="@+id/warning_confirm_test"
             style="@style/SweetAlert.Button.Blue"
             android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:text="@string/btn_show_me"/>
 
         <TextView
             android:id="@+id/txt_6"
-            android:text="A warning message, with listeners bind to Cancel and Confirm button..."
+            android:text="@string/show_dialog_warning_cancel_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -145,11 +177,11 @@
             android:id="@+id/warning_cancel_test"
             style="@style/SweetAlert.Button.Blue"
             android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:text="@string/btn_show_me"/>
 
         <TextView
             android:id="@+id/txt_7"
-            android:text="A message with a custom icon"
+            android:text="@string/show_dialog_message_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -161,7 +193,7 @@
             android:id="@+id/custom_img_test"
             style="@style/SweetAlert.Button.Blue"
             android:layout_margin="10dp"
-            android:text="Try me!"/>
+            android:text="@string/btn_show_me"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>

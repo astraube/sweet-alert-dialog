@@ -15,15 +15,6 @@ import androidx.annotation.LayoutRes
  * @author Andre Straube
  * Created on 11/08/2020.
  */
-/*
-fun <T, R> T?.notNull(block: (it: T) -> R) {
-    if (this != null) block(this)
-}
-
-inline fun <T, R> whenNotNull(input: T?, block: (T)->R): R? {
-    return input?.let(block)
-}
-*/
 fun String?.isNotNullOrEmpty() = !this.isNullOrEmpty()
 fun String?.isNotNullOrBlank() = !this.isNullOrBlank()
 

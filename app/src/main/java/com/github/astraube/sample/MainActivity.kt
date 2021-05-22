@@ -7,28 +7,34 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.github.astraube.sample.databinding.ActivityMainBinding
 import com.github.astraube.sweetalertdialog.SweetAlertDialog
 import com.github.astraube.sweetalertdialog.SweetAlertType
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+    private val binding by viewBinding(ActivityMainBinding::inflate)
 
     private var i = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        custom_view.setOnClickListener(this)
-        basic_test.setOnClickListener(this)
-        under_text_test.setOnClickListener(this)
-        error_text_test.setOnClickListener(this)
-        success_text_test.setOnClickListener(this)
-        warning_confirm_test.setOnClickListener(this)
-        warning_cancel_test.setOnClickListener(this)
-        custom_img_test.setOnClickListener(this)
-        progress_dialog.setOnClickListener(this)
+        setContentView(binding.root)
+
+        binding.progressBinding1.setOnClickListener(this)
+        binding.progressBinding2.setOnClickListener(this)
+
+        binding.customView.setOnClickListener(this)
+        binding.basicTest.setOnClickListener(this)
+        binding.underTextTest.setOnClickListener(this)
+        binding.errorTextTest.setOnClickListener(this)
+        binding.successTextTest.setOnClickListener(this)
+        binding.warningConfirmTest.setOnClickListener(this)
+        binding.warningCancelTest.setOnClickListener(this)
+        binding.customImgTest.setOnClickListener(this)
+        binding.progressDialog.setOnClickListener(this)
     }
 
     private fun getTextWatcherTime(et: EditText): TextWatcher {
@@ -63,51 +69,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            /*R.id.custom_view -> {
-                val sad = SweetAlertDialog.Builder(this, SweetAlertType.CUSTOM_VIEW_TYPE)
-                    .title("Custom View Dialog")
-                    .customView(R.layout.dialog_checkpoint_date)
-                    .confirmListener(object : SweetAlertDialog.OnSweetListener {
-                        override fun onClick(dialog: SweetAlertDialog) {
-                            val viewDialog = dialog.getCustomView()
-                            viewDialog?.also { root ->
-
-                                root.findViewById<SwitchCompat>(R.id.switch1)?.let {
-                                    println("------> switch1 : ${it.isChecked}")
-                                }
-
-                                root.findViewById<ViewGroup>(R.id.container_2)?.let {
-                                    it.getAllViews().forEach {  child ->
-                                        if (child is ToggleButton) {
-                                            println("------> ${child.tag} : ${child.text} : ${child.isChecked}")
-                                        }
-                                    }
-                                }
-
-                                root.findViewById<TextInputEditText>(R.id.etStartTime)?.let {
-                                    println("------> Start Time : ${it.text}")
-                                }
-                                root.findViewById<TextInputEditText>(R.id.etInitTime)?.let {
-                                    println("------> Init Time : ${it.text}")
-                                }
-                            }
-                            dialog.dismiss()
-                        }
-                    })
-                    .buildShow()
-
-                val viewDialog = sad.getCustomView()
-                val timeTextWatcher = NumberTextWatcher(NumberTextWatcher.MASK_HH_MM)
-
-                viewDialog?.also { root ->
-                    root.findViewById<TextInputEditText>(R.id.etStartTime)?.let {
-                        it.addTextChangedListener(timeTextWatcher)
-                    }
-                    root.findViewById<TextInputEditText>(R.id.etInitTime)?.let {
-                        it.addTextChangedListener(timeTextWatcher)
-                    }
-                }
-            }*/
+            R.id.progress_binding_1 -> {
+                val pDialog = SweetAlertDialog(this, SweetAlertType.PROGRESS_TYPE_BINDING_TESTE_1)
+                pDialog.setTitleText("Loading")
+                pDialog.show()
+            }
+            R.id.progress_binding_2 -> {
+                val pDialog = SweetAlertDialog(this, SweetAlertType.PROGRESS_TYPE_BINDING_TESTE_2)
+                pDialog.setTitleText("Loading")
+                pDialog.setCancelable(true)
+                pDialog.show()
+            }
             R.id.custom_view -> {
                 val sad = SweetAlertDialog.Builder(this, SweetAlertType.CUSTOM_VIEW_TYPE)
                     .title("Custom View Dialog")

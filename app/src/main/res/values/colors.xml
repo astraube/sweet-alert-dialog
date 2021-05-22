@@ -15,6 +15,9 @@
     <color name="colorGrayDark">#555555</color>
     <color name="colorStrokeWithoutElevation">#DBDCE3</color>
 
+    <color name="btn_bg_color_blue">@color/colorRedDark</color>
+    <color name="btn_bg_pressed_color_blue">@color/colorOrange</color>
+
     <color name="chipIconTint">@color/colorText2</color>
     <color name="chipBackgroundColor">@android:color/white</color>
 

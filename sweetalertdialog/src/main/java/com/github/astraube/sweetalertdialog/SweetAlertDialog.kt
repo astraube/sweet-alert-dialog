@@ -6,6 +6,8 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
@@ -22,9 +24,10 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import com.github.astraube.sweetalertdialog.OptAnimationLoader.loadAnimation
 import com.github.astraube.sweetalertdialog.SweetAlertType.*
+import com.github.astraube.sweetalertdialog.databinding.SweetAlertDialogBinding
+import com.github.astraube.sweetalertdialog.databinding.SweetDialogProgressBinding
 import com.github.astraube.sweetalertdialog.extensions.inflate
 import com.github.astraube.sweetalertdialog.extensions.isNotNullOrBlank
 import com.github.astraube.sweetalertdialog.extensions.setBgRes
@@ -33,7 +36,7 @@ import com.github.astraube.sweetalertdialog.extensions.visible
 class SweetAlertDialog constructor(
     context: Context,
     val builderInfo: Builder
-) : Dialog(context, R.style.SweetAlert_Dialog) {
+) : Dialog(context, R.style.SweetAlert_Dialog), View.OnClickListener {
 
     constructor(context: Context): this(
         context,
@@ -156,10 +159,24 @@ class SweetAlertDialog constructor(
         fun onClick(dialog: SweetAlertDialog)
     }
 
+    private lateinit var binding: SweetAlertDialogBinding
+
+
+    override fun onClick(v: View) {
+        Log.d("@@@", "click")
+        this.dismissWithAnimation()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.sweet_alert_dialog)
-        rootView = window!!.decorView.findViewById(android.R.id.content)
+
+        binding = SweetAlertDialogBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+
+        rootView = window?.decorView?.findViewById(android.R.id.content)
+
+        rootView?.setOnClickListener(this)
 
         mDialogContainer = findViewById<View>(R.id.dialogContainer) as ViewGroup
         mTitleTextView = findViewById<View>(R.id.title_text) as TextView
@@ -178,7 +195,7 @@ class SweetAlertDialog constructor(
         progressHelper.progressWheel = findViewById<View>(R.id.progressWheel) as ProgressWheel
 
         mCloseButton?.setOnClickListener {
-            this.dismiss()
+            this.dismissWithAnimation()
         }
 
         mConfirmAction = SweetActionButton(this, R.id.confirm_button, builderInfo.confirmListener, builderInfo.confirmText, builderInfo.confirmBgResource).also {
@@ -247,6 +264,22 @@ class SweetAlertDialog constructor(
                     mProgressFrame!!.visibility = View.VISIBLE
                     mConfirmAction?.isVisible(false)
                 }
+                PROGRESS_TYPE_BINDING_TESTE_1 -> {
+                    rootView?.let {
+                        SweetDialogProgressBinding.inflate(
+                            LayoutInflater.from(this.context), (it as ViewGroup), true
+                        )
+                    }
+                }
+                PROGRESS_TYPE_BINDING_TESTE_2 -> {
+                    rootView?.let {
+                        (it as ViewGroup).removeAllViews()
+
+                        SweetDialogProgressBinding.inflate(
+                            LayoutInflater.from(this.context), it, true
+                        )
+                    }
+                }
                 CUSTOM_IMAGE_TYPE -> setCustomImage(builderInfo.customImgDrawable)
                 CUSTOM_VIEW_TYPE -> {
                     if (builderInfo.customView != null) {
@@ -276,10 +309,10 @@ class SweetAlertDialog constructor(
         }
     }
 
-    override fun setCancelable(flag: Boolean) {
+    fun setCancelable(flag: Boolean, showCloseButton: Boolean = false) {
         super.setCancelable(flag)
 
-        showCloseButton(flag)
+        showCloseButton(showCloseButton)
     }
 
     fun showCloseButton(isShow: Boolean): SweetAlertDialog {

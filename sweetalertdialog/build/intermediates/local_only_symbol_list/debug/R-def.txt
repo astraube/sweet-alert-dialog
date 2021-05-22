@@ -89,6 +89,7 @@ id x
 id y
 id z
 layout sweet_alert_dialog
+layout sweet_dialog_progress
 string LOADING
 string app_name
 string dialog_cancel
