@@ -159,7 +159,7 @@ class SweetAlertDialog constructor(
         fun onClick(dialog: SweetAlertDialog)
     }
 
-    private lateinit var binding: SweetAlertDialogBinding
+    //private lateinit var binding: SweetAlertDialogBinding
 
 
     override fun onClick(v: View) {
@@ -170,9 +170,11 @@ class SweetAlertDialog constructor(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = SweetAlertDialogBinding.inflate(layoutInflater)
+        //binding = SweetAlertDialogBinding.inflate(layoutInflater)
 
-        setContentView(binding.root)
+        //setContentView(binding.root)
+
+        setContentView(R.layout.sweet_alert_dialog)
 
         rootView = window?.decorView?.findViewById(android.R.id.content)
 
